@@ -1,0 +1,84 @@
+help-and-usage: (
+    `Usage: ved [options] [files]
+    `
+    `Options:
+    `  -h, --help              Display this information.
+    `  -window <window-name>   Launch in a window.
+    `  -dark                   Launch in dark mode.
+    `  -two_splits
+    lines
+    and
+)
+
+match x:
+
+in-case done?
+
+Manager: (
+    Storage
+    Adapter
+    use adapter.(power, sink)
+    use storage.data
+    data: storage.data
+)
+
+def x
+def y
+
+Token: enum (
+    semicolon
+    number: I32
+    string: Box(Str)
+)
+
+robot -turn- left
+get, -abc
+ls(-la, "parties/2010")
+
+token.map {
+    semicolon, "','"
+    number, [n] <- "Number {n}"
+    string, [s] <- "String \"{s}\""
+}
+
+Arithmetic: [T] <- (
+    add: [T, T, >T]
+    sub: [T, T, >T]
+    mul: [T, T, >T]
+    div: [T, T, >T]
+    zero: T
+    one: T
+)
+
+Display: [t] <- [t, >Box(Str)]
+
+Arithmetic(I32) <- (
+    add: (+)
+    sub: (-)
+    mul: (*)
+    div: (/)
+    zero: 0
+    one: 1
+)
+
+Display(I32) <- "number"
+
+
+pub use Manager.fork -as- Manager.adapter::fork
+
+fork: [adapter: *Adapter]
+
+manager.data
+manager.power
+manager::fork
+
+
+formula: [x: *T, use Arithmetic(T)] <- {
+    x.mul(x).sub(x).div(x).add(x)
+}
+
+fancy: [x: T, Display(T)] <- {
+    println("*****")
+    println("| {}", x::display)
+    println("*****")
+}

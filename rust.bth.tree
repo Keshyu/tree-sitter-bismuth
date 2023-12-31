@@ -1,0 +1,268 @@
+
+> tree-sitter-bismuth@1.0.0 parse
+> npx tree-sitter-cli parse rust.bth
+
+(source_file [0, 0] - [84, 0]
+  (binding [0, 0] - [10, 1]
+    (name [0, 0] - [0, 14])
+    value: (pipe [0, 16] - [10, 1]
+      (multiline_string [1, 4] - [1, 33])
+      (multiline_string [2, 4] - [7, 18])
+      (name [8, 4] - [8, 9])
+      (name [9, 4] - [9, 7])))
+  (tail_dedent [12, 0] - [12, 8]
+    (bare_call [12, 0] - [12, 7]
+      function: (name [12, 0] - [12, 5])
+      input: (name [12, 6] - [12, 7])))
+  (bare_call [14, 0] - [14, 13]
+    function: (name [14, 0] - [14, 7])
+    input: (name [14, 8] - [14, 13]))
+  (binding [16, 0] - [22, 1]
+    (name [16, 0] - [16, 7])
+    value: (group [16, 9] - [22, 1]
+      (name [17, 4] - [17, 11])
+      (name [18, 4] - [18, 11])
+      (use [19, 4] - [19, 29]
+        (access [19, 8] - [19, 29]
+          (name [19, 8] - [19, 15])
+          (group [19, 16] - [19, 29]
+            (name [19, 17] - [19, 22])
+            (name [19, 24] - [19, 28]))))
+      (use [20, 4] - [20, 20]
+        (access [20, 8] - [20, 20]
+          (name [20, 8] - [20, 15])
+          (name [20, 16] - [20, 20])))
+      (binding [21, 4] - [21, 22]
+        (name [21, 4] - [21, 8])
+        value: (access [21, 10] - [21, 22]
+          (name [21, 10] - [21, 17])
+          (name [21, 18] - [21, 22])))))
+  (define [24, 0] - [24, 5]
+    (name [24, 4] - [24, 5]))
+  (define [25, 0] - [25, 5]
+    (name [25, 4] - [25, 5]))
+  (binding [27, 0] - [31, 1]
+    (name [27, 0] - [27, 5])
+    value: (call [27, 7] - [31, 1]
+      function: (name [27, 7] - [27, 11])
+      input: (group [27, 12] - [31, 1]
+        (name [28, 4] - [28, 13])
+        (binding [29, 4] - [29, 15]
+          (name [29, 4] - [29, 10])
+          value: (name [29, 12] - [29, 15]))
+        (binding [30, 4] - [30, 20]
+          (name [30, 4] - [30, 10])
+          value: (call [30, 12] - [30, 20]
+            function: (name [30, 12] - [30, 15])
+            input: (group [30, 15] - [30, 20]
+              (name [30, 16] - [30, 19])))))))
+  (infix_call [33, 0] - [33, 17]
+    lhs: (name [33, 0] - [33, 5])
+    function: (symbol_name [33, 6] - [33, 12])
+    rhs: (name [33, 13] - [33, 17]))
+  (name [34, 0] - [34, 3])
+  (name [34, 5] - [34, 9])
+  (bare_call [35, 0] - [35, 23]
+    function: (name [35, 0] - [35, 2])
+    input: (group [35, 2] - [35, 23]
+      (name [35, 3] - [35, 6])
+      (string [35, 8] - [35, 22])))
+  (access [37, 0] - [41, 1]
+    (name [37, 0] - [37, 5])
+    (call [37, 6] - [41, 1]
+      function: (name [37, 6] - [37, 9])
+      input: (pipe [37, 10] - [41, 1]
+        (name [38, 4] - [38, 13])
+        (string [38, 15] - [38, 20])
+        (name [39, 4] - [39, 10])
+        (infix_call [39, 12] - [39, 31]
+          lhs: (function_type [39, 12] - [39, 15]
+            (name [39, 13] - [39, 14]))
+          function: (symbol_name [39, 16] - [39, 18])
+          rhs: (string [39, 19] - [39, 31]))
+        (name [40, 4] - [40, 10])
+        (infix_call [40, 12] - [40, 35]
+          lhs: (function_type [40, 12] - [40, 15]
+            (name [40, 13] - [40, 14]))
+          function: (symbol_name [40, 16] - [40, 18])
+          rhs: (string [40, 19] - [40, 35])))))
+  (binding [43, 0] - [50, 1]
+    (name [43, 0] - [43, 10])
+    value: (infix_call [43, 12] - [50, 1]
+      lhs: (function_type [43, 12] - [43, 15]
+        (name [43, 13] - [43, 14]))
+      function: (symbol_name [43, 16] - [43, 18])
+      rhs: (group [43, 19] - [50, 1]
+        (binding [44, 4] - [44, 19]
+          (name [44, 4] - [44, 7])
+          value: (function_type [44, 9] - [44, 19]
+            (name [44, 10] - [44, 11])
+            (name [44, 13] - [44, 14])
+            (name [44, 16] - [44, 18])))
+        (binding [45, 4] - [45, 19]
+          (name [45, 4] - [45, 7])
+          value: (function_type [45, 9] - [45, 19]
+            (name [45, 10] - [45, 11])
+            (name [45, 13] - [45, 14])
+            (name [45, 16] - [45, 18])))
+        (binding [46, 4] - [46, 19]
+          (name [46, 4] - [46, 7])
+          value: (function_type [46, 9] - [46, 19]
+            (name [46, 10] - [46, 11])
+            (name [46, 13] - [46, 14])
+            (name [46, 16] - [46, 18])))
+        (binding [47, 4] - [47, 19]
+          (name [47, 4] - [47, 7])
+          value: (function_type [47, 9] - [47, 19]
+            (name [47, 10] - [47, 11])
+            (name [47, 13] - [47, 14])
+            (name [47, 16] - [47, 18])))
+        (binding [48, 4] - [48, 11]
+          (name [48, 4] - [48, 8])
+          value: (name [48, 10] - [48, 11]))
+        (binding [49, 4] - [49, 10]
+          (name [49, 4] - [49, 7])
+          value: (name [49, 9] - [49, 10])))))
+  (binding [52, 0] - [52, 30]
+    (name [52, 0] - [52, 7])
+    value: (infix_call [52, 9] - [52, 30]
+      lhs: (function_type [52, 9] - [52, 12]
+        (name [52, 10] - [52, 11]))
+      function: (symbol_name [52, 13] - [52, 15])
+      rhs: (function_type [52, 16] - [52, 30]
+        (name [52, 17] - [52, 18])
+        (bare_call [52, 20] - [52, 29]
+          function: (name [52, 20] - [52, 24])
+          input: (group [52, 24] - [52, 29]
+            (name [52, 25] - [52, 28]))))))
+  (infix_call [54, 0] - [61, 1]
+    lhs: (call [54, 0] - [54, 15]
+      function: (name [54, 0] - [54, 10])
+      input: (group [54, 10] - [54, 15]
+        (name [54, 11] - [54, 14])))
+    function: (symbol_name [54, 16] - [54, 18])
+    rhs: (group [54, 19] - [61, 1]
+      (binding [55, 4] - [55, 12]
+        (name [55, 4] - [55, 7])
+        value: (group [55, 9] - [55, 12]
+          (symbol_name [55, 10] - [55, 11])))
+      (binding [56, 4] - [56, 12]
+        (name [56, 4] - [56, 7])
+        value: (group [56, 9] - [56, 12]
+          (symbol_name [56, 10] - [56, 11])))
+      (binding [57, 4] - [57, 12]
+        (name [57, 4] - [57, 7])
+        value: (group [57, 9] - [57, 12]
+          (symbol_name [57, 10] - [57, 11])))
+      (binding [58, 4] - [58, 12]
+        (name [58, 4] - [58, 7])
+        value: (group [58, 9] - [58, 12]
+          (symbol_name [58, 10] - [58, 11])))
+      (binding [59, 4] - [59, 11]
+        (name [59, 4] - [59, 8])
+        value: (name [59, 10] - [59, 11]))
+      (binding [60, 4] - [60, 10]
+        (name [60, 4] - [60, 7])
+        value: (name [60, 9] - [60, 10]))))
+  (infix_call [63, 0] - [63, 24]
+    lhs: (call [63, 0] - [63, 12]
+      function: (name [63, 0] - [63, 7])
+      input: (group [63, 7] - [63, 12]
+        (name [63, 8] - [63, 11])))
+    function: (symbol_name [63, 13] - [63, 15])
+    rhs: (string [63, 16] - [63, 24]))
+  (tail_dedent [66, 0] - [66, 42]
+    (bare_call [66, 0] - [66, 41]
+      function: (name [66, 0] - [66, 3])
+      (ERROR [66, 4] - [66, 25]
+        (name [66, 4] - [66, 7])
+        (access [66, 8] - [66, 20]
+          (name [66, 8] - [66, 15])
+          (name [66, 16] - [66, 20]))
+        (symbol_name [66, 21] - [66, 25]))
+      input: (access [66, 26] - [66, 41]
+        (name [66, 26] - [66, 33])
+        (name [66, 34] - [66, 41]))))
+  (ERROR [66, 42] - [66, 47]
+    (name [66, 43] - [66, 47]))
+  (binding [68, 0] - [68, 25]
+    (name [68, 0] - [68, 4])
+    value: (function_type [68, 6] - [68, 25]
+      (binding [68, 7] - [68, 24]
+        (name [68, 7] - [68, 14])
+        value: (name [68, 16] - [68, 24]))))
+  (access [70, 0] - [70, 12]
+    (name [70, 0] - [70, 7])
+    (name [70, 8] - [70, 12]))
+  (access [71, 0] - [71, 13]
+    (name [71, 0] - [71, 7])
+    (name [71, 8] - [71, 13]))
+  (binding [72, 0] - [72, 13]
+    (name [72, 0] - [72, 7])
+    (ERROR [72, 8] - [72, 9])
+    value: (name [72, 9] - [72, 13]))
+  (binding [75, 0] - [77, 1]
+    (name [75, 0] - [75, 7])
+    value: (infix_call [75, 9] - [77, 1]
+      lhs: (function_type [75, 9] - [75, 35]
+        (binding [75, 10] - [75, 15]
+          (name [75, 10] - [75, 11])
+          value: (name [75, 13] - [75, 15]))
+        (use [75, 17] - [75, 34]
+          (call [75, 21] - [75, 34]
+            function: (name [75, 21] - [75, 31])
+            input: (group [75, 31] - [75, 34]
+              (name [75, 32] - [75, 33])))))
+      function: (symbol_name [75, 36] - [75, 38])
+      rhs: (pipe [75, 39] - [77, 1]
+        (access [76, 4] - [76, 33]
+          (access [76, 4] - [76, 26]
+            (access [76, 4] - [76, 19]
+              (access [76, 4] - [76, 12]
+                (name [76, 4] - [76, 5])
+                (call [76, 6] - [76, 12]
+                  function: (name [76, 6] - [76, 9])
+                  input: (group [76, 9] - [76, 12]
+                    (name [76, 10] - [76, 11]))))
+              (call [76, 13] - [76, 19]
+                function: (name [76, 13] - [76, 16])
+                input: (group [76, 16] - [76, 19]
+                  (name [76, 17] - [76, 18]))))
+            (call [76, 20] - [76, 26]
+              function: (name [76, 20] - [76, 23])
+              input: (group [76, 23] - [76, 26]
+                (name [76, 24] - [76, 25]))))
+          (call [76, 27] - [76, 33]
+            function: (name [76, 27] - [76, 30])
+            input: (group [76, 30] - [76, 33]
+              (name [76, 31] - [76, 32])))))))
+  (binding [79, 0] - [83, 1]
+    (name [79, 0] - [79, 5])
+    value: (infix_call [79, 7] - [83, 1]
+      lhs: (function_type [79, 7] - [79, 25]
+        (binding [79, 8] - [79, 12]
+          (name [79, 8] - [79, 9])
+          value: (name [79, 11] - [79, 12]))
+        (bare_call [79, 14] - [79, 24]
+          function: (name [79, 14] - [79, 21])
+          input: (group [79, 21] - [79, 24]
+            (name [79, 22] - [79, 23]))))
+      function: (symbol_name [79, 26] - [79, 28])
+      rhs: (pipe [79, 29] - [83, 1]
+        (bare_call [80, 4] - [80, 20]
+          function: (name [80, 4] - [80, 11])
+          input: (group [80, 11] - [80, 20]
+            (string [80, 12] - [80, 19])))
+        (bare_call [81, 4] - [81, 31]
+          function: (name [81, 4] - [81, 11])
+          input: (group [81, 11] - [81, 31]
+            (string [81, 12] - [81, 18])
+            (binding [81, 20] - [81, 30]
+              (name [81, 20] - [81, 21])
+              (ERROR [81, 22] - [81, 23])
+              value: (name [81, 23] - [81, 30]))))
+        (bare_call [82, 4] - [82, 20]
+          function: (name [82, 4] - [82, 11])
+          input: (group [82, 11] - [82, 20]
+            (string [82, 12] - [82, 19])))))))
+rust.bth	11 ms	(ERROR [66, 4] - [66, 25])

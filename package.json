@@ -1,0 +1,27 @@
+{
+  "name": "tree-sitter-bismuth",
+  "version": "1.0.0",
+  "description": "Tree-sitter parser for Bismuth",
+  "main": "bindings/node",
+  "scripts": {
+    "hx": "cp ./queries/* ~/.config/helix/runtime/queries/bismuth && hx -g build",
+    "gen": "npx tree-sitter-cli generate",
+    "parse": "npx tree-sitter-cli parse"
+  },
+  "author": "Keshyu",
+  "license": "MIT",
+  "dependencies": {
+    "nan": "^2.18.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.8"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.bismuth",
+      "file-types": [
+        "bth"
+      ]
+    }
+  ]
+}

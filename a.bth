@@ -1,0 +1,58 @@
+use hello;
+
+main = [*i32] { + 4; * 5; - 3; / 2 }
+
+fn main(x: i32) -> i32 { x.add(4).mul(5).sub(3).div(2) }
+
+print "Hello";
+print("Hello"; "Hi");
+
+main (a = 4; b = "Hello") {
+	
+}
+
+main (a: 4; b: "Hello"):
+if (a == b):
+print "They're equal. (wow)"
+print "They're bqual. (woa)"
+print "They're dqual. (owo)"
+
+request-data; await:
+prompt("Your name: "; >name):
+1 2 3;
+
+const main = [hello: i32].hello
+
+if (a == b) {
+	do something
+}
+
+let view = [&Self; >Element(Message)] {
+	Column (
+	    self/code; iter
+	    enumerate; map { (is_line_sel: index == self.sel.line; line) }
+	    map {
+	        Row (
+	            line; iter
+				enumerate; map { (is_line_sel && word_i == self.sel.word, word) }
+	            map [(is_word_sel, word)] {
+	                container(text(word) size(32))
+	                if is_word_sel style(Custom(WordSelected))
+	                into
+	            }
+	            collect
+	        )
+	        spacing(8)
+	        container padding(v: 0, h: 12)
+	        if is_line_sel style(Custom(LineSelected))
+	        into
+	    }
+	    collect
+	)
+	container
+    width(Fill)
+    height(Fill)
+    center_x
+    center_y
+    into
+}
