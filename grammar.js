@@ -1,124 +1,110 @@
-const symbol = /[!@#$%^&*\-=_+\\|/?<>~]+/;
-const name = /\w+/;
+// const symbol = /[!@#$%^&*\-=_+\\|/?<>~:]+/;
+// const name = /\w+/;
+const symbol = /[!@#$%^&*\-=+\\|<>/?~]+/;
+const name = /[a-zA-Z0-9_]+/;
 
 module.exports = grammar({
   name: 'bismuth',
-  extras: _ => [/\s/],
-  word: $ => $.name,
+  extras: _ => [/[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/],
+  word: $ => $.word,
   externals: $ => [
-    $._line_break,
+    // $._line_break,
   ],
   precedences: $ => [
-    [$.nothing, $.group],
-    [$.call, $.access],
-    [$.bare_call, $.call],
-    [$.infix_call, $.call],
+    // [$.call, $.dot_pipe],
+    // [$.bare_call, $.call],
+    // [$.infix_call, $.call],
     // [$.tail_dedent, $.bare_call],
   ],
-  inline: $ => [$._expression],
+  inline: $ => [$._expr, $._top_expr],
   rules: {
-    source_file: $ => optional($._bare_group),
-    _top_expression: $ => choice(
+    source_file: $ => optional($._bare_decl),
+    _bare_decl: $ => sepBy($.break, $._top_expr),
+
+    decl: $ => seq('[', optional($._bare_decl), ']'),
+    pipe: $ => seq('{', optional(sepBy($.break, $._top_expr)), '}'),
+    group: $ => seq('(', optional(sepBy($.break, $._top_expr)), ')'),
+    break: _ => repeat1(choice('\n', ';')),
+
+    _top_expr: $ => choice(
       $.binding,
-      $.define,
-      $.use,
       $.infix_call,
       $.tail_dedent,
-      $.bare_call,
-      $._expression,
+      $.top_call,
+      $._expr
     ),
-    binding: $ => seq(
-      $.name,
+    binding: $ => prec(1, seq(
+      choice($.word_name, $.group),
       ':',
-      field('value', choice($._expression, $.infix_call)),
-    ),
-    define: $ => seq('def', $.name),
-    use: $ => seq('use', $._expression),
-    tail_dedent: $ => seq(choice($._expression, $.bare_call), ':'),
-    infix_call: $ => seq(
-      field('lhs', $._expression),
-      field('function', $.symbol_name),
-      field('rhs', $._expression),
-    ),
-    bare_call: $ => seq(
-      field('function', $.name),
-      field('input', $._expression),
-    ),
-    _expression: $ => choice(
-      $.nothing,
-      $.name,
-      $.symbol_name,
-      $.string,
-      $.multiline_string,
-      $.access,
-      $.call,
-      $.group,
+      choice($._expr, $.infix_call),
+    )),
+    tail_dedent: $ => seq($._top_expr, ':'),
+    infix_call: $ => seq($._expr, $.symbol_name, $._expr),
+    top_call: $ => prec.left(repeat1(prec(1, $._expr))),
+    
+    _expr: $ => choice(
       $.pipe,
-      $.function_type,
+      $.group,
+      $.call,
+      $.dot_pipe,
+      $.comma_group,
+      $.word_name,
+      $.literal
     ),
-    nothing: _ => seq('(', ')'),
-    call: $ => prec.left(seq(
-      field('function', $._expression),
-      field('input', choice($.group, $.pipe)),
-    )),
-    access: $ => prec.left(seq($._expression, '.', $._expression)),
-    group: $ => seq('(', optional($._bare_group), ')'),
-    _bare_group: $ => sepBy1(
-      choice(',', $._line_break),
-      $._top_expression
-    ),
-    pipe: $ => seq(
-      '{',
-      sepBy(
-        choice(';', $._line_break),
-        sepBy1(',', $._top_expression),
-      ),
-      '}',
-    ),
-    function_type: $ => seq(
-      '[',
-      sepBy(choice(',', $._line_break), seq(
-        optional(choice('>', '*')),
-        $._top_expression,
+    call: $ => seq($._expr, $.group),
+    dot_pipe: $ => prec.left(sepBy1('.', $._expr)),
+    comma_group: $ => prec.left(sepBy1(',', $._expr)),
+    
+    literal: $ => seq(':', choice(
+      token.immediate(choice(
+        name,
+        repeat1(seq(name, symbol)),
+        repeat1(seq(symbol, name)),
+        sepBy(symbol, name),
       )),
-      ']',
-    ),
-    symbol_name: _ => token(choice(
-      symbol,
-      strictSepBy1(name, symbol),
+      seq(
+        token.immediate('('),
+        optional(sepBy($.break, $._top_expr)),
+        ')',
+      ),
     )),
-    name: _ => token(choice(
+    word_name: $ => token(choice(
       name,
       repeat1(seq(name, symbol)),
       repeat1(seq(symbol, name)),
-      strictSepBy1(symbol, name),
+      sepBy(symbol, name),
     )),
-    string: _ => /"([^"]|\\")*"/,
-    multiline_string: $ => strictSepBy1(
-      $._line_break,
-      /`[^\n]*/,
+    symbol_name: $ => choice(symbol, sepBy(name, symbol)),
+    
+    word: _ => /[a-zA-Z0-9_]+|[!@#$%^&*\-=+\\|<>/?~]+/,
+    
+    // raw_string: $ => seq(
+    //   token.immediate('#"'),
+    //   optional(/[^"]+/),
+    //   '"'
+    // ),
+    // raw_str_block: $ => seq('#', token.immediate($.str_block)),
+    string: $ => seq('"', optional(choice(/[^"\\]+/, $.escape)), '"'),
+    str_block: $ => seq(
+      '`',
+      optional(sepBy('\n', choice(/[^\n\\]+/, $.escape))),
     ),
+    escape: _ => '\\\\',
   },
   conflicts: $ => [
-    [$.multiline_string],
   ],
 });
 
 function sepBy(sep, rule) {
-  return optional(sepBy1(sep, rule));
+  return seq(
+    rule,
+    repeat(seq(sep, rule)),
+  );
 }
 
 function sepBy1(sep, rule) {
   return seq(
     rule,
-    repeat(seq(sep, rule)),
-    optional(sep),
-  );
-}
-
-function strictSepBy1(sep, rule) {
-  return seq(
-    rule,
-    repeat(seq(sep, rule)),
+    repeat1(seq(sep, rule)),
   );
 }

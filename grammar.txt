@@ -1,0 +1,35 @@
+FILE         : bare-decl
+IGNORE       : space
+
+bare-decl    : decl[1:-1]
+
+decl         : '[' top-expr/break? ']'
+pipe         : '{' top-expr/break? '}'
+group        : '(' top-expr/break? ')'
+break        : ['\n' ';']+
+
+top-expr     : [binding infix-call tail-dedent top-call expr]
+binding      : [name group] ':' [expr infix-call]
+tail-dedent  : top-expr ':'
+infix-call   : expr symbol-name expr
+top-call     : expr bare-group
+
+expr         : [pipe group call dot-pipe comma-group name literal]
+call         : expr group
+dot-pipe     : expr/'.'
+comma-group  : expr/','
+
+literal      : ':' immediate[name group]
+name         : [word (word symbol)+ (symbol word)+ word/symbol]
+symbol-name  : [symbol symbol/name]
+
+symbol       : /[!@#$%^&*\-=+\\|<>/?~:]+/
+word         : /[a-zA-Z0-9_]+/
+
+raw-string   : '#' immediate(string)
+raw-str-block: '#' immediate(str-block)
+string       : '"' [/[^"]+/ escape]? '"'
+str-block    : '`' [/[^\n]+/ escape]/"\n"?
+escape       : '\' 
+
+space        : '\s'.except('\n')+

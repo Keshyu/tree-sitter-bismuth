@@ -12,12 +12,12 @@ help-and-usage: (
 
 match x:
 
-in-case done?
+in-case done?:
 
 Manager: (
     Storage
     Adapter
-    use adapter.(power, sink)
+    use adapter, (:power, :sink)
     use storage.data
     data: storage.data
 )
@@ -42,10 +42,10 @@ token.map {
 }
 
 Arithmetic: [T] <- (
-    add: [T, T, >T]
-    sub: [T, T, >T]
-    mul: [T, T, >T]
-    div: [T, T, >T]
+    add: fn (T, T, > T)
+    sub: fn (T, T, > T)
+    mul: fn (T, T, > T)
+    div: fn (T, T, > T)
     zero: T
     one: T
 )
