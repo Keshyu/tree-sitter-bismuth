@@ -1,17 +1,16 @@
-// const symbol = /[!@#$%^&*\-=_+\\|/?<>~:]+/;
-// const name = /\w+/;
 const symbol = /[!@#$%^&*\-=+\\|<>/?~]+/;
 const name = /[a-zA-Z0-9_]+/;
 
 module.exports = grammar({
   name: 'bismuth',
-  extras: _ => [/[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/],
+  extras: $ => [$._space],
   word: $ => $.word,
   externals: $ => [
     // $._line_break,
   ],
   precedences: $ => [
-    // [$.call, $.dot_pipe],
+    [$.call, $.dot_pipe, $.comma_group],
+    // [$.binding, $.tail_dedent],
     // [$.bare_call, $.call],
     // [$.infix_call, $.call],
     // [$.tail_dedent, $.bare_call],
@@ -29,15 +28,15 @@ module.exports = grammar({
     _top_expr: $ => choice(
       $.binding,
       $.infix_call,
-      $.tail_dedent,
+      // $.tail_dedent,
       $.top_call,
       $._expr
     ),
-    binding: $ => prec(1, seq(
+    binding: $ => seq(
       choice($.word_name, $.group),
       ':',
       choice($._expr, $.infix_call),
-    )),
+    ),
     tail_dedent: $ => seq($._top_expr, ':'),
     infix_call: $ => seq($._expr, $.symbol_name, $._expr),
     top_call: $ => prec.left(repeat1(prec(1, $._expr))),
@@ -52,8 +51,8 @@ module.exports = grammar({
       $.literal
     ),
     call: $ => seq($._expr, $.group),
-    dot_pipe: $ => prec.left(sepBy1('.', $._expr)),
-    comma_group: $ => prec.left(sepBy1(',', $._expr)),
+    dot_pipe: $ => prec.left(seq($._expr, '.', $._expr)),
+    comma_group: $ => prec.left(seq($._expr, ',', $._expr)),
     
     literal: $ => seq(':', choice(
       token.immediate(choice(
@@ -90,6 +89,7 @@ module.exports = grammar({
       optional(sepBy('\n', choice(/[^\n\\]+/, $.escape))),
     ),
     escape: _ => '\\\\',
+    _space: _ => /[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/,
   },
   conflicts: $ => [
   ],
