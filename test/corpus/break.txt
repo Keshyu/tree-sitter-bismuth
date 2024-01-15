@@ -1,0 +1,47 @@
+===
+Newlines
+===
+jake
+mike
+helen
+---
+(source_file (word) (word) (word))
+
+===
+Semicolons
+===
+jake; mike; helen
+---
+(source_file (word) (word) (word))
+
+===
+Mixed
+===
+jake; helen
+jake; helen
+---
+(source_file (word) (word) (word) (word))
+
+===
+Extra breaks in-between
+===
+jake
+
+; ; 
+
+mike; coal;;
+
+helen
+---
+(source_file (word) (word) (word) (word))
+
+===
+Extra breaks around
+===
+;;
+;jake; mike; helen
+
+
+
+---
+(source_file (word) (word) (word))

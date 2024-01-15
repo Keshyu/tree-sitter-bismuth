@@ -1,0 +1,19 @@
+===
+Single argument
+===
+print name
+---
+(source_file (call
+	fn: (word)
+	input: (word)))
+
+===
+Multiple arguments
+===
+sum a b c
+---
+(source_file (call
+	fn: (word)
+	input: (word)
+	input: (word)
+	input: (word)))

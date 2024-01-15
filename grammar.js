@@ -1,110 +1,74 @@
-const symbol = /[!@#$%^&*\-=+\\|<>/?~]+/;
-const name = /[a-zA-Z0-9_]+/;
-
 module.exports = grammar({
   name: 'bismuth',
   extras: $ => [$._space],
-  word: $ => $.word,
-  externals: $ => [
-    // $._line_break,
-  ],
-  precedences: $ => [
-    [$.call, $.dot_pipe, $.comma_group],
-    // [$.binding, $.tail_dedent],
-    // [$.bare_call, $.call],
-    // [$.infix_call, $.call],
-    // [$.tail_dedent, $.bare_call],
-  ],
-  inline: $ => [$._expr, $._top_expr],
+  word: $ => $.tree_sitter_word,
   rules: {
-    source_file: $ => optional($._bare_decl),
-    _bare_decl: $ => sepBy($.break, $._top_expr),
+    source_file: $ => $._sequence,
 
-    decl: $ => seq('[', optional($._bare_decl), ']'),
-    pipe: $ => seq('{', optional(sepBy($.break, $._top_expr)), '}'),
-    group: $ => seq('(', optional(sepBy($.break, $._top_expr)), ')'),
-    break: _ => repeat1(choice('\n', ';')),
+    _sequence: $ => seq(
+      optional($._break),
+      sep($._expr, $._break),
+      optional($._break),
+    ),
+    _break: _ => repeat1(choice('\n', ';')),
 
-    _top_expr: $ => choice(
-      $.binding,
-      $.infix_call,
-      // $.tail_dedent,
-      $.top_call,
-      $._expr
-    ),
-    binding: $ => seq(
-      choice($.word_name, $.group),
-      ':',
-      choice($._expr, $.infix_call),
-    ),
-    tail_dedent: $ => seq($._top_expr, ':'),
-    infix_call: $ => seq($._expr, $.symbol_name, $._expr),
-    top_call: $ => prec.left(repeat1(prec(1, $._expr))),
-    
     _expr: $ => choice(
-      $.pipe,
       $.group,
+      $.pipe,
+      alias($.comma_group, $.group),
+      alias($.dot_pipe, $.pipe),
       $.call,
-      $.dot_pipe,
-      $.comma_group,
-      $.word_name,
-      $.literal
+      $.word,
     ),
-    call: $ => seq($._expr, $.group),
-    dot_pipe: $ => prec.left(seq($._expr, '.', $._expr)),
-    comma_group: $ => prec.left(seq($._expr, ',', $._expr)),
-    
-    literal: $ => seq(':', choice(
-      token.immediate(choice(
-        name,
-        repeat1(seq(name, symbol)),
-        repeat1(seq(symbol, name)),
-        sepBy(symbol, name),
-      )),
-      seq(
-        token.immediate('('),
-        optional(sepBy($.break, $._top_expr)),
-        ')',
-      ),
-    )),
-    word_name: $ => token(choice(
-      name,
-      repeat1(seq(name, symbol)),
-      repeat1(seq(symbol, name)),
-      sepBy(symbol, name),
-    )),
-    symbol_name: $ => choice(symbol, sepBy(name, symbol)),
-    
-    word: _ => /[a-zA-Z0-9_]+|[!@#$%^&*\-=+\\|<>/?~]+/,
-    
-    // raw_string: $ => seq(
-    //   token.immediate('#"'),
-    //   optional(/[^"]+/),
-    //   '"'
-    // ),
-    // raw_str_block: $ => seq('#', token.immediate($.str_block)),
-    string: $ => seq('"', optional(choice(/[^"\\]+/, $.escape)), '"'),
-    str_block: $ => seq(
-      '`',
-      optional(sepBy('\n', choice(/[^\n\\]+/, $.escape))),
+
+    group: $ => seq('(', $._sequence, ')'),
+    pipe: $ => seq('{', $._sequence, '}'),
+
+    call: $ => seq(
+      field('fn', $._expr_call),
+      field('input', repeat1($._expr_call)),
     ),
-    escape: _ => '\\\\',
+    _expr_call: $ => choice(
+      $.group,
+      $.pipe,
+      alias($.dot_pipe, $.pipe),
+      $.word,
+    ),
+
+    comma_group: $ => seq(
+      optional(repeat1(',')),
+      sep1($._expr_comma_group, repeat1(',')),
+      optional(repeat1(',')),
+    ),
+    _expr_comma_group: $ => choice(
+      $.group,
+      $.pipe,
+      alias($.dot_pipe, $.pipe),
+      $.call,
+      $.word,
+    ),
+
+    dot_pipe: $ => seq(
+      sep1($._expr_dot_pipe, '.'),
+    ),
+    _expr_dot_pipe: $ => choice(
+      $.group,
+      $.pipe,
+      $.word,
+    ),
+
+    word: _ => /[a-zA-Z0-9_]+/,
+    symbol: _ => /[!@#$%^&*\-=+\\|<>/?~]+/,
+    tree_sitter_word: _ => /[a-zA-Z0-9_]+|[!@#$%^&*\-=+\\|<>/?~]+/,
+
     _space: _ => /[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/,
   },
-  conflicts: $ => [
-  ],
 });
 
-function sepBy(sep, rule) {
-  return seq(
-    rule,
-    repeat(seq(sep, rule)),
-  );
+function sep(rule, sepr) {
+  return seq(rule, repeat(seq(sepr, rule)));
 }
 
-function sepBy1(sep, rule) {
-  return seq(
-    rule,
-    repeat1(seq(sep, rule)),
-  );
+function sep1(rule, sepr) {
+  return seq(rule, repeat1(seq(sepr, rule)));
 }

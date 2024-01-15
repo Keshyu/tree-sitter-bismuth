@@ -1,0 +1,43 @@
+===
+Single group
+===
+(a; b; c)
+---
+(source_file (group (word) (word) (word)))
+
+===
+Nested groups
+===
+(a; (x; y); (x; (y; (z; w); z)))
+---
+(source_file
+	(group
+		(word)
+		(group (word) (word))
+		(group
+			(word)
+			(group
+				(word)
+				(group (word) (word))
+				(word))))) 
+
+===
+Comma-group
+===
+jake, mike, helen
+---
+(source_file (group (word) (word) (word)))
+
+===
+^- Extra breaks in-between
+===
+jake  , ,   mike, coal,,  helen
+---
+(source_file (group (word) (word) (word) (word)))
+
+===
+^- Extra breaks around
+===
+,, ,jake, mike, helen  ,, ,
+---
+(source_file (group (word) (word) (word)))

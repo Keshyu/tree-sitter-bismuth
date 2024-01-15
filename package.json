@@ -6,7 +6,8 @@
   "scripts": {
     "hx": "cp ./queries/* ~/.config/helix/runtime/queries/bismuth && hx -g build",
     "gen": "npx tree-sitter-cli generate",
-    "parse": "npx tree-sitter-cli parse"
+    "parse": "npx tree-sitter-cli parse",
+    "test": "npx tree-sitter-cli test"
   },
   "author": "Keshyu",
   "license": "MIT",

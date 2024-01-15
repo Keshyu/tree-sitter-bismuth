@@ -3,7 +3,7 @@ IGNORE       : space
 
 bare-decl    : decl[1:-1]
 
-decl         : '[' top-expr/break? ']'
+decl         : top-expr break '[' top-expr/break? ']'
 pipe         : '{' top-expr/break? '}'
 group        : '(' top-expr/break? ')'
 break        : ['\n' ';']+

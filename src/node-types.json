@@ -1,167 +1,44 @@
 [
   {
-    "type": "binding",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "infix_call",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
-        },
-        {
-          "type": "word_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "break",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "call",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
-        },
-        {
-          "type": "word_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "comma_group",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
-        },
-        {
-          "type": "word_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "dot_pipe",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
-        },
-        {
-          "type": "word_name",
-          "named": true
-        }
-      ]
+    "fields": {
+      "fn": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "input": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -173,23 +50,7 @@
       "required": false,
       "types": [
         {
-          "type": "binding",
-          "named": true
-        },
-        {
-          "type": "break",
-          "named": true
-        },
-        {
           "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
           "named": true
         },
         {
@@ -197,121 +58,11 @@
           "named": true
         },
         {
-          "type": "infix_call",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
           "type": "pipe",
           "named": true
         },
         {
-          "type": "top_call",
-          "named": true
-        },
-        {
-          "type": "word_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "infix_call",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
-        },
-        {
-          "type": "symbol_name",
-          "named": true
-        },
-        {
-          "type": "word_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "binding",
-          "named": true
-        },
-        {
-          "type": "break",
-          "named": true
-        },
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "infix_call",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
-        },
-        {
-          "type": "top_call",
-          "named": true
-        },
-        {
-          "type": "word_name",
+          "type": "word",
           "named": true
         }
       ]
@@ -323,26 +74,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "binding",
-          "named": true
-        },
-        {
-          "type": "break",
-          "named": true
-        },
-        {
           "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
           "named": true
         },
         {
@@ -350,23 +85,11 @@
           "named": true
         },
         {
-          "type": "infix_call",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
           "type": "pipe",
           "named": true
         },
         {
-          "type": "top_call",
-          "named": true
-        },
-        {
-          "type": "word_name",
+          "type": "word",
           "named": true
         }
       ]
@@ -381,23 +104,7 @@
       "required": false,
       "types": [
         {
-          "type": "binding",
-          "named": true
-        },
-        {
-          "type": "break",
-          "named": true
-        },
-        {
           "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
           "named": true
         },
         {
@@ -405,67 +112,11 @@
           "named": true
         },
         {
-          "type": "infix_call",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
           "type": "pipe",
           "named": true
         },
         {
-          "type": "top_call",
-          "named": true
-        },
-        {
-          "type": "word_name",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "symbol_name",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "top_call",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "call",
-          "named": true
-        },
-        {
-          "type": "comma_group",
-          "named": true
-        },
-        {
-          "type": "dot_pipe",
-          "named": true
-        },
-        {
-          "type": "group",
-          "named": true
-        },
-        {
-          "type": "literal",
-          "named": true
-        },
-        {
-          "type": "pipe",
-          "named": true
-        },
-        {
-          "type": "word_name",
+          "type": "word",
           "named": true
         }
       ]
@@ -473,10 +124,6 @@
   },
   {
     "type": "\n",
-    "named": false
-  },
-  {
-    "type": "\"",
     "named": false
   },
   {
@@ -496,31 +143,11 @@
     "named": false
   },
   {
-    "type": ":",
-    "named": false
-  },
-  {
     "type": ";",
     "named": false
   },
   {
-    "type": "[",
-    "named": false
-  },
-  {
-    "type": "]",
-    "named": false
-  },
-  {
-    "type": "`",
-    "named": false
-  },
-  {
-    "type": "escape",
-    "named": true
-  },
-  {
-    "type": "word_name",
+    "type": "word",
     "named": true
   },
   {

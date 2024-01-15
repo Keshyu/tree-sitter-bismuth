@@ -1,0 +1,8 @@
+===
+Dot-pipe & comma-group
+===
+a.b . c,x . y
+---
+(source_file (group
+	(pipe (word) (word) (word))
+	(pipe (word) (word))))

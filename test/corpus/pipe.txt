@@ -1,0 +1,29 @@
+===
+Single pipe
+===
+{ a; b; c }
+---
+(source_file (pipe (word) (word) (word)))
+
+===
+Nested pipes
+===
+{ a; { x; y }; { x; { y; { z; w }; z } } }
+---
+(source_file
+	(pipe
+		(word)
+		(pipe (word) (word))
+		(pipe
+			(word)
+			(pipe
+				(word)
+				(pipe (word) (word))
+				(word))))) 
+
+===
+Dot-pipe
+===
+jake.mike.helen
+---
+(source_file (pipe (word) (word) (word)))
