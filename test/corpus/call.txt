@@ -5,7 +5,7 @@ print name
 ---
 (source_file (call
 	fn: (word)
-	input: (word)))
+	input: (group (word))))
 
 ===
 Multiple arguments
@@ -14,6 +14,38 @@ sum a b c
 ---
 (source_file (call
 	fn: (word)
-	input: (word)
-	input: (word)
-	input: (word)))
+	input: (group (word) (word) (word))))
+
+===
+No-space call
+===
+sum(a; b; c)
+---
+(source_file (call
+	fn: (word)
+	input: (group (word) (word) (word))))
+
+===
+Space + no-space call
+===
+sum sum(a; b) c
+---
+(source_file (call
+	fn: (word)
+	input: (group
+      (call
+        fn: (word)
+        input: (group (word) (word)))
+      (word))))
+
+===
+Non-nested call ambiguity
+===
+sum sum (a; b) c
+---
+(source_file (call
+	fn: (word)
+	input: (group
+      (word)
+      (group (word) (word))
+      (word))))

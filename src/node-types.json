@@ -8,6 +8,10 @@
         "required": true,
         "types": [
           {
+            "type": "call",
+            "named": true
+          },
+          {
             "type": "group",
             "named": true
           },
@@ -22,19 +26,11 @@
         ]
       },
       "input": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
             "type": "group",
-            "named": true
-          },
-          {
-            "type": "pipe",
-            "named": true
-          },
-          {
-            "type": "word",
             "named": true
           }
         ]
