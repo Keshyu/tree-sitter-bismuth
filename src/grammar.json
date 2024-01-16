@@ -105,6 +105,15 @@
           "value": "group"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "infix_call"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
           "type": "SYMBOL",
           "name": "call"
         },
@@ -183,69 +192,82 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "group"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "pipe"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "comma_group"
-              },
-              "named": true,
-              "value": "group"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "call"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "dot_pipe"
-              },
-              "named": true,
-              "value": "pipe"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "no_space_call"
-              },
-              "named": true,
-              "value": "call"
-            },
-            {
-              "type": "ALIAS",
-              "content": {
-                "type": "SYMBOL",
-                "name": "call_on_literal"
-              },
-              "named": true,
-              "value": "call"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "word"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "literal"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_tail_dedent_expr"
         },
         {
           "type": "STRING",
           "value": ":"
+        }
+      ]
+    },
+    "_tail_dedent_expr": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "group"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pipe"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "comma_group"
+          },
+          "named": true,
+          "value": "group"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "infix_call"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "call"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dot_pipe"
+          },
+          "named": true,
+          "value": "pipe"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "no_space_call"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "call_on_literal"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
         }
       ]
     },
@@ -306,6 +328,15 @@
           },
           "named": true,
           "value": "group"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "infix_call"
+          },
+          "named": true,
+          "value": "call"
         },
         {
           "type": "SYMBOL",
@@ -396,6 +427,96 @@
       ]
     },
     "_expr_comma_group": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "group"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pipe"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "infix_call"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "call"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "dot_pipe"
+          },
+          "named": true,
+          "value": "pipe"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "no_space_call"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "call_on_literal"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
+        }
+      ]
+    },
+    "infix_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "left",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expr_infix_call"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "fn",
+          "content": {
+            "type": "SYMBOL",
+            "name": "symbol"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "right",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expr_infix_call"
+          }
+        }
+      ]
+    },
+    "_expr_infix_call": {
       "type": "CHOICE",
       "members": [
         {

@@ -74,6 +74,10 @@
             "named": true
           },
           {
+            "type": "symbol",
+            "named": true
+          },
+          {
             "type": "word",
             "named": true
           }
@@ -81,7 +85,7 @@
       },
       "input": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "group",
@@ -89,6 +93,58 @@
           },
           {
             "type": "literal",
+            "named": true
+          }
+        ]
+      },
+      "left": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "word",
             "named": true
           }
         ]
@@ -273,6 +329,10 @@
   },
   {
     "type": "literal",
+    "named": true
+  },
+  {
+    "type": "symbol",
     "named": true
   },
   {

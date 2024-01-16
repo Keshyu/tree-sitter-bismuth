@@ -78,3 +78,50 @@ user account :name
 (source_file (call
 	fn: (word)
 	input: (group (word) (literal))))
+
+===
+Infix call
+===
+a < b
+---
+(source_file (call
+	left: (word)
+	fn: (symbol)
+	right: (word)))
+
+===
+^- & binding
+===
+c: a + b
+---
+(source_file (binding
+	id: (word)
+	value: (call
+		left: (word)
+		fn: (symbol)
+		right: (word))))
+
+===
+^- & comma-group
+===
+a + b, c + d
+---
+(source_file (group
+	(call
+		left: (word)
+		fn: (symbol)
+		right: (word))
+	(call
+		left: (word)
+		fn: (symbol)
+		right: (word))))
+
+===
+^- & call
+===
+f a + g b
+---
+(source_file (call
+	left: (call fn: (word) input: (group (word)))
+	fn: (symbol)
+	right: (call fn: (word) input: (group (word)))))

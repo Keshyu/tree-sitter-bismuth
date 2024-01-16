@@ -22,6 +22,7 @@ module.exports = grammar({
 
       $.binding,
       alias($.comma_group, $.group),
+      alias($.infix_call, $.call),
       $.call,
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
@@ -35,20 +36,22 @@ module.exports = grammar({
     pipe: $ => seq('{', $._sequence, '}'),
 
     tail_dedent: $ => seq(
-      choice(
-        $.group,
-        $.pipe,
-
-        alias($.comma_group, $.group),
-        $.call,
-        alias($.dot_pipe, $.pipe),
-        alias($.no_space_call, $.call),
-        alias($.call_on_literal, $.call),
-
-        $.word,
-        $.literal,
-      ),
+      $._tail_dedent_expr,
       ':',
+    ),
+    _tail_dedent_expr: $ => choice(
+      $.group,
+      $.pipe,
+
+      alias($.comma_group, $.group),
+      alias($.infix_call, $.call),
+      $.call,
+      alias($.dot_pipe, $.pipe),
+      alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
+
+      $.word,
+      $.literal,
     ),
 
     binding: $ => seq(
@@ -60,6 +63,7 @@ module.exports = grammar({
       $.group,
       $.pipe,
       alias($.comma_group, $.group),
+      alias($.infix_call, $.call),
       $.call,
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
@@ -74,6 +78,23 @@ module.exports = grammar({
       repeat(','),
     ),
     _expr_comma_group: $ => choice(
+      $.group,
+      $.pipe,
+      alias($.infix_call, $.call),
+      $.call,
+      alias($.dot_pipe, $.pipe),
+      alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
+      $.word,
+      $.literal,
+    ),
+
+    infix_call: $ => seq(
+      field('left', $._expr_infix_call),
+      field('fn', $.symbol),
+      field('right', $._expr_infix_call),
+    ),
+    _expr_infix_call: $ => choice(
       $.group,
       $.pipe,
       $.call,

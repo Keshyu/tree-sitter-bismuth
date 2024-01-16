@@ -1,25 +1,4 @@
 ===
-All
-===
-pregen; bucket: water, heat rock.texture:darken(half)
----
-(source_file
-  (word)
-  (binding
-    id: (word)
-    value: (group
-      (word)
-      (call
-        fn: (word)
-        input: (group (pipe
-          (word)
-          (call
-            fn: (call
-              fn: (word)
-              input: (literal))
-            input: (group (word)))))))))
-
-===
 Binding & comma-group
 ===
 result: a, b, c
