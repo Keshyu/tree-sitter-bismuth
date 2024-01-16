@@ -49,9 +49,9 @@ module.exports = grammar({
     ),
 
     comma_group: $ => seq(
-      optional(repeat1(',')),
+      repeat(','),
       sep1($._expr_comma_group, repeat1(',')),
-      optional(repeat1(',')),
+      repeat(','),
     ),
     _expr_comma_group: $ => choice(
       $.group,
