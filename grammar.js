@@ -2,7 +2,7 @@ const literal = /:[a-zA-Z0-9_]+/;
 
 module.exports = grammar({
   name: 'bismuth',
-  extras: $ => [/[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/],
+  extras: _ => [/[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/],
   word: $ => $.tree_sitter_word,
   rules: {
     source_file: $ => $._sequence,
@@ -31,10 +31,9 @@ module.exports = grammar({
     pipe: $ => seq('{', $._sequence, '}'),
 
     binding: $ => seq(
-      choice($.word, $.group, $.pipe),
-      ':',
-      $._space,
-      $._expr_binding,
+      field('id', choice($.word, $.group, $.pipe)),
+      /:[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/,
+      field('value', $._expr_binding),
     ),
     _expr_binding: $ => choice(
       $.group,
@@ -90,19 +89,6 @@ module.exports = grammar({
       $.literal,
     ),
 
-    call_on_literal: $ => seq(
-      field('fn', $._expr_call_on_literal),
-      field('input', alias(token.immediate(literal), $.literal)),
-    ),
-    _expr_call_on_literal: $ => choice(
-      $.group,
-      $.pipe,
-      alias($.call_on_literal, $.call),
-      alias($.no_space_call, $.call),
-      $.word,
-      $.literal,
-    ),
-
     no_space_call: $ => seq(
       field('fn', $._expr_no_space_call),
       field('input', alias($.immediate_group, $.group)),
@@ -110,6 +96,7 @@ module.exports = grammar({
     _expr_no_space_call: $ => choice(
       $.group,
       $.pipe,
+      alias($.call_on_literal, $.call),
       alias($.no_space_call, $.call),
       $.word,
       $.literal,
@@ -118,6 +105,18 @@ module.exports = grammar({
       token.immediate('('),
       $._sequence,
       ')',
+    ),
+
+    call_on_literal: $ => seq(
+      field('fn', $._expr_call_on_literal),
+      field('input', alias(token.immediate(literal), $.literal)),
+    ),
+    _expr_call_on_literal: $ => choice(
+      $.group,
+      $.pipe,
+      alias($.call_on_literal, $.call),
+      $.word,
+      $.literal,
     ),
 
     literal: _ => literal,

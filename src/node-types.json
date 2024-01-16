@@ -1,5 +1,55 @@
 [
   {
+    "type": "binding",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "call",
     "named": true,
     "fields": {
@@ -54,6 +104,10 @@
       "required": false,
       "types": [
         {
+          "type": "binding",
+          "named": true
+        },
+        {
           "type": "call",
           "named": true
         },
@@ -85,6 +139,10 @@
       "required": true,
       "types": [
         {
+          "type": "binding",
+          "named": true
+        },
+        {
           "type": "call",
           "named": true
         },
@@ -115,6 +173,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "binding",
+          "named": true
+        },
         {
           "type": "call",
           "named": true
