@@ -17,18 +17,39 @@ module.exports = grammar({
     _expr: $ => choice(
       $.group,
       $.pipe,
+
+      $.tail_dedent,
+
       $.binding,
       alias($.comma_group, $.group),
       $.call,
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+
       $.word,
       $.literal,
     ),
 
     group: $ => seq('(', $._sequence, ')'),
     pipe: $ => seq('{', $._sequence, '}'),
+
+    tail_dedent: $ => seq(
+      choice(
+        $.group,
+        $.pipe,
+
+        alias($.comma_group, $.group),
+        $.call,
+        alias($.dot_pipe, $.pipe),
+        alias($.no_space_call, $.call),
+        alias($.call_on_literal, $.call),
+
+        $.word,
+        $.literal,
+      ),
+      ':',
+    ),
 
     binding: $ => seq(
       field('id', choice($.word, $.group, $.pipe)),

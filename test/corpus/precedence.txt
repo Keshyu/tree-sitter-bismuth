@@ -20,10 +20,52 @@ pregen; bucket: water, heat rock.texture:darken(half)
             input: (group (word)))))))))
 
 ===
-Dot-pipe & comma-group
+Binding & comma-group
 ===
-a.b . c,x . y
+result: a, b, c
+---
+(source_file (binding
+  id: (word)
+  value: (group (word) (word) (word))))
+
+===
+Comma-group & call
+===
+f x, g y
 ---
 (source_file (group
-  (pipe (word) (word) (word))
-  (pipe (word) (word))))
+  (call fn: (word) input: (group (word)))
+  (call fn: (word) input: (group (word)))))
+
+===
+Call & dot-pipe
+===
+print n1.str n2.str
+---
+(source_file (call
+  fn: (word)
+  input:  (group
+    (pipe (word) (word))
+    (pipe (word) (word)))))
+
+===
+Dot-pipe & no-space call
+===
+a.add(x).mul(y).sub(z)
+---
+(source_file (pipe
+  (word)
+  (call fn: (word) input: (group (word)))
+  (call fn: (word) input: (group (word)))
+  (call fn: (word) input: (group (word)))))
+
+===
+No-space call & call on literal
+===
+storage:store(data)
+---
+(source_file (call
+  fn: (call
+    fn: (word)
+    input: (literal))
+  input: (group (word))))

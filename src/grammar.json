@@ -89,6 +89,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "tail_dedent"
+        },
+        {
+          "type": "SYMBOL",
           "name": "binding"
         },
         {
@@ -172,6 +176,76 @@
         {
           "type": "STRING",
           "value": "}"
+        }
+      ]
+    },
+    "tail_dedent": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "group"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "pipe"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "comma_group"
+              },
+              "named": true,
+              "value": "group"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "call"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "dot_pipe"
+              },
+              "named": true,
+              "value": "pipe"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "no_space_call"
+              },
+              "named": true,
+              "value": "call"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "call_on_literal"
+              },
+              "named": true,
+              "value": "call"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "word"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "literal"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ":"
         }
       ]
     },
