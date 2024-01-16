@@ -26,7 +26,7 @@ sum(a; b; c)
 	input: (group (word) (word) (word))))
 
 ===
-Space + no-space call
+^- Inside of space call
 ===
 sum sum(a; b) c
 ---
@@ -39,7 +39,7 @@ sum sum(a; b) c
       (word))))
 
 ===
-Non-nested call ambiguity
+^- Non-nested call ambiguity
 ===
 sum sum (a; b) c
 ---
@@ -49,3 +49,32 @@ sum sum (a; b) c
       (word)
       (group (word) (word))
       (word))))
+
+===
+^- Rescursive call
+===
+bake(cherry)(slice)
+---
+(source_file (call
+	fn: (call
+		fn: (word)
+		input: (group (word)))
+	input: (group (word))))
+
+===
+Literal call
+===
+user:name
+---
+(source_file (call
+	fn: (word)
+	input: (literal)))
+
+===
+^- Regular call ambiguity
+===
+user account :name
+---
+(source_file (call
+	fn: (word)
+	input: (group (word) (literal))))

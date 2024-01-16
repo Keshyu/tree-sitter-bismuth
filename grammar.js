@@ -1,3 +1,5 @@
+const literal = /:[a-zA-Z0-9_]+/;
+
 module.exports = grammar({
   name: 'bismuth',
   extras: $ => [/[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/],
@@ -15,15 +17,36 @@ module.exports = grammar({
     _expr: $ => choice(
       $.group,
       $.pipe,
+      $.binding,
       alias($.comma_group, $.group),
       $.call,
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
       $.word,
+      $.literal,
     ),
 
     group: $ => seq('(', $._sequence, ')'),
     pipe: $ => seq('{', $._sequence, '}'),
+
+    binding: $ => seq(
+      choice($.word, $.group, $.pipe),
+      ':',
+      $._space,
+      $._expr_binding,
+    ),
+    _expr_binding: $ => choice(
+      $.group,
+      $.pipe,
+      alias($.comma_group, $.group),
+      $.call,
+      alias($.dot_pipe, $.pipe),
+      alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
+      $.word,
+      $.literal,
+    ),
 
     comma_group: $ => seq(
       optional(repeat1(',')),
@@ -36,7 +59,9 @@ module.exports = grammar({
       $.call,
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
       $.word,
+      $.literal,
     ),
 
     call: $ => seq(
@@ -48,7 +73,9 @@ module.exports = grammar({
       $.pipe,
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
       $.word,
+      $.literal,
     ),
 
     dot_pipe: $ => seq(
@@ -58,12 +85,34 @@ module.exports = grammar({
       $.group,
       $.pipe,
       alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
       $.word,
+      $.literal,
+    ),
+
+    call_on_literal: $ => seq(
+      field('fn', $._expr_call_on_literal),
+      field('input', alias(token.immediate(literal), $.literal)),
+    ),
+    _expr_call_on_literal: $ => choice(
+      $.group,
+      $.pipe,
+      alias($.call_on_literal, $.call),
+      alias($.no_space_call, $.call),
+      $.word,
+      $.literal,
     ),
 
     no_space_call: $ => seq(
-      field('fn', $.word),
+      field('fn', $._expr_no_space_call),
       field('input', alias($.immediate_group, $.group)),
+    ),
+    _expr_no_space_call: $ => choice(
+      $.group,
+      $.pipe,
+      alias($.no_space_call, $.call),
+      $.word,
+      $.literal,
     ),
     immediate_group: $ => seq(
       token.immediate('('),
@@ -71,6 +120,7 @@ module.exports = grammar({
       ')',
     ),
 
+    literal: _ => literal,
     word: _ => /[a-zA-Z0-9_]+/,
     symbol: _ => /[!@#$%^&*\-=+\\|<>/?~]+/,
     tree_sitter_word: _ => /[a-zA-Z0-9_]+|[!@#$%^&*\-=+\\|<>/?~]+/,

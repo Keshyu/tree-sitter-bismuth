@@ -16,6 +16,10 @@
             "named": true
           },
           {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "pipe",
             "named": true
           },
@@ -31,6 +35,10 @@
         "types": [
           {
             "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
             "named": true
           }
         ]
@@ -51,6 +59,10 @@
         },
         {
           "type": "group",
+          "named": true
+        },
+        {
+          "type": "literal",
           "named": true
         },
         {
@@ -81,6 +93,10 @@
           "named": true
         },
         {
+          "type": "literal",
+          "named": true
+        },
+        {
           "type": "pipe",
           "named": true
         },
@@ -105,6 +121,10 @@
         },
         {
           "type": "group",
+          "named": true
+        },
+        {
+          "type": "literal",
           "named": true
         },
         {
@@ -141,6 +161,10 @@
   {
     "type": ";",
     "named": false
+  },
+  {
+    "type": "literal",
+    "named": true
   },
   {
     "type": "word",

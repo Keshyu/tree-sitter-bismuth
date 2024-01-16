@@ -11,6 +11,16 @@ help-and-usage: (
     and
 )
 
+`a: b, c d.e(f):g
+`a :  b ,  c   d . e ( f ) : g
+`  B    G    C   P   C     C   
+`  I    R    A   I   A     A   
+`  N    O    L   P   L     L   
+`  D    U    L   E   L     L   
+`  I    P                      
+`  N                           
+`  G                           
+
 match x:
 
 in-case done?:

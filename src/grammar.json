@@ -97,6 +97,10 @@
           "value": "group"
         },
         {
+          "type": "SYMBOL",
+          "name": "call"
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
@@ -104,10 +108,6 @@
           },
           "named": true,
           "value": "pipe"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "call"
         },
         {
           "type": "ALIAS",
@@ -119,8 +119,21 @@
           "value": "call"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "call_on_literal"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
           "type": "SYMBOL",
           "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
         }
       ]
     },
@@ -233,6 +246,10 @@
           "name": "pipe"
         },
         {
+          "type": "SYMBOL",
+          "name": "call"
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
@@ -240,10 +257,6 @@
           },
           "named": true,
           "value": "pipe"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "call"
         },
         {
           "type": "ALIAS",
@@ -255,8 +268,21 @@
           "value": "call"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "call_on_literal"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
           "type": "SYMBOL",
           "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
         }
       ]
     },
@@ -319,8 +345,21 @@
           "value": "call"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "call_on_literal"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
           "type": "SYMBOL",
           "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
         }
       ]
     },
@@ -375,8 +414,89 @@
           "value": "call"
         },
         {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "call_on_literal"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
           "type": "SYMBOL",
           "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
+        }
+      ]
+    },
+    "call_on_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "fn",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expr_call_on_literal"
+          }
+        },
+        {
+          "type": "FIELD",
+          "name": "input",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "IMMEDIATE_TOKEN",
+              "content": {
+                "type": "PATTERN",
+                "value": ":[a-zA-Z0-9_]+"
+              }
+            },
+            "named": true,
+            "value": "literal"
+          }
+        }
+      ]
+    },
+    "_expr_call_on_literal": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "group"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pipe"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "call_on_literal"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "no_space_call"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
         }
       ]
     },
@@ -388,7 +508,7 @@
           "name": "fn",
           "content": {
             "type": "SYMBOL",
-            "name": "word"
+            "name": "_expr_no_space_call"
           }
         },
         {
@@ -403,6 +523,36 @@
             "named": true,
             "value": "group"
           }
+        }
+      ]
+    },
+    "_expr_no_space_call": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "group"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pipe"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "no_space_call"
+          },
+          "named": true,
+          "value": "call"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "literal"
         }
       ]
     },
@@ -425,6 +575,10 @@
           "value": ")"
         }
       ]
+    },
+    "literal": {
+      "type": "PATTERN",
+      "value": ":[a-zA-Z0-9_]+"
     },
     "word": {
       "type": "PATTERN",
