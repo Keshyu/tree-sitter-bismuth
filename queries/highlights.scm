@@ -1,24 +1,19 @@
-((name) @type
+(word) @variable
+
+((word) @type
   (#match? @type "^[^a-z]*[A-Z]"))
 
 (string) @string
-(multiline_string) @string
+(string_block) @string
 
 (call
-  function: (name) @function)
-(bare_call
-  function: (name) @keyword)
+  fn: (word) @function)
 (infix_call
-  function: (symbol_name) @operator)
+  fn: (symbol) @operator)
 
 (tail_dedent ":" @keyword)
 
 ":" @punctuation.delimiter
-">" @keyword
-"*" @keyword
-"use" @keyword
-"def" @keyword
-
 "(" @punctuation.bracket
 ")" @punctuation.bracket
 "[" @punctuation.bracket

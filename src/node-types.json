@@ -50,6 +50,10 @@
             "named": true
           },
           {
+            "type": "infix_call",
+            "named": true
+          },
+          {
             "type": "literal",
             "named": true
           },
@@ -59,6 +63,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "string_block",
             "named": true
           },
           {
@@ -102,10 +110,6 @@
             "named": true
           },
           {
-            "type": "symbol",
-            "named": true
-          },
-          {
             "type": "word",
             "named": true
           }
@@ -113,7 +117,7 @@
       },
       "input": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "group",
@@ -121,74 +125,6 @@
           },
           {
             "type": "literal",
-            "named": true
-          }
-        ]
-      },
-      "left": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "binding",
-            "named": true
-          },
-          {
-            "type": "call",
-            "named": true
-          },
-          {
-            "type": "group",
-            "named": true
-          },
-          {
-            "type": "literal",
-            "named": true
-          },
-          {
-            "type": "pipe",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "word",
-            "named": true
-          }
-        ]
-      },
-      "right": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "binding",
-            "named": true
-          },
-          {
-            "type": "call",
-            "named": true
-          },
-          {
-            "type": "group",
-            "named": true
-          },
-          {
-            "type": "literal",
-            "named": true
-          },
-          {
-            "type": "pipe",
-            "named": true
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "word",
             "named": true
           }
         ]
@@ -236,6 +172,10 @@
             "named": true
           },
           {
+            "type": "infix_call",
+            "named": true
+          },
+          {
             "type": "literal",
             "named": true
           },
@@ -245,6 +185,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "string_block",
             "named": true
           },
           {
@@ -271,6 +215,10 @@
           },
           {
             "type": "group",
+            "named": true
+          },
+          {
+            "type": "infix_call",
             "named": true
           },
           {
@@ -318,6 +266,10 @@
           "named": true
         },
         {
+          "type": "infix_call",
+          "named": true
+        },
+        {
           "type": "literal",
           "named": true
         },
@@ -330,6 +282,10 @@
           "named": true
         },
         {
+          "type": "string_block",
+          "named": true
+        },
+        {
           "type": "tail_dedent",
           "named": true
         },
@@ -338,6 +294,90 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "infix_call",
+    "named": true,
+    "fields": {
+      "fn": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "symbol",
+            "named": true
+          }
+        ]
+      },
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binding",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binding",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -365,6 +405,10 @@
           "named": true
         },
         {
+          "type": "infix_call",
+          "named": true
+        },
+        {
           "type": "literal",
           "named": true
         },
@@ -374,6 +418,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "string_block",
           "named": true
         },
         {
@@ -412,6 +460,10 @@
           "named": true
         },
         {
+          "type": "infix_call",
+          "named": true
+        },
+        {
           "type": "literal",
           "named": true
         },
@@ -421,6 +473,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "string_block",
           "named": true
         },
         {
@@ -457,6 +513,10 @@
         },
         {
           "type": "group",
+          "named": true
+        },
+        {
+          "type": "infix_call",
           "named": true
         },
         {
@@ -524,6 +584,10 @@
   },
   {
     "type": "literal",
+    "named": true
+  },
+  {
+    "type": "string_block",
     "named": true
   },
   {

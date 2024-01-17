@@ -21,7 +21,7 @@ Block string
 `This is a message.
 `A very long message
 ---
-(source_file (string))
+(source_file (string_block))
 
 ===
 ^- Tightly surrounded
@@ -32,7 +32,7 @@ advance
 `A very long message
 advance
 ---
-(source_file (word) (string) (word))
+(source_file (word) (string_block) (word))
 
 ===
 ^- Neighboring block stirngs
@@ -45,7 +45,7 @@ advance
 `This is another message.
 `Another very long message
 ---
-(source_file (string) (string))
+(source_file (string_block) (string_block))
 
 ===
 ^- Inside bindings
@@ -54,5 +54,5 @@ a: `Hello
 b: `Hi
 ---
 (source_file
-	(binding id: (word) value: (string))
-	(binding id: (word) value: (string)))
+	(binding id: (word) value: (string_block))
+	(binding id: (word) value: (string_block)))

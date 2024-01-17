@@ -109,13 +109,8 @@
           "value": "group"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "infix_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "infix_call"
         },
         {
           "type": "SYMBOL",
@@ -158,13 +153,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",
@@ -248,13 +238,8 @@
           "value": "group"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "infix_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "infix_call"
         },
         {
           "type": "SYMBOL",
@@ -369,13 +354,8 @@
           "value": "group"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "infix_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "infix_call"
         },
         {
           "type": "SYMBOL",
@@ -490,13 +470,8 @@
           "value": "group"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "infix_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "infix_call"
         },
         {
           "type": "SYMBOL",
@@ -539,13 +514,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",
@@ -620,13 +590,8 @@
           "name": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "infix_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "infix_call"
         },
         {
           "type": "SYMBOL",

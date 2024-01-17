@@ -84,7 +84,7 @@ Infix call
 ===
 a < b
 ---
-(source_file (call
+(source_file (infix_call
 	left: (word)
 	fn: (symbol)
 	right: (word)))
@@ -96,7 +96,7 @@ c: a + b
 ---
 (source_file (binding
 	id: (word)
-	value: (call
+	value: (infix_call
 		left: (word)
 		fn: (symbol)
 		right: (word))))
@@ -107,11 +107,11 @@ c: a + b
 a + b, c + d
 ---
 (source_file (group
-	(call
+	(infix_call
 		left: (word)
 		fn: (symbol)
 		right: (word))
-	(call
+	(infix_call
 		left: (word)
 		fn: (symbol)
 		right: (word))))
@@ -121,7 +121,7 @@ a + b, c + d
 ===
 f a + g b
 ---
-(source_file (call
+(source_file (infix_call
 	left: (call fn: (word) input: (group (word)))
 	fn: (symbol)
 	right: (call fn: (word) input: (group (word)))))
