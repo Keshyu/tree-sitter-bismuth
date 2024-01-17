@@ -1,0 +1,18 @@
+No-space bindings: `a::b`
+
+Strings
+  Strings
+    Test multi-line string inside of newline sensitive syntax
+  Block strings
+  Escape sequences
+  Interpolation: `"\(...)"`
+  Raw strings: `#"..."`
+
+Multiple infix calls: `a + b - c`
+  Homogenous: `a + b + c` / `a + b , c`
+
+Extra dots
+  Ignore for convenience
+  Or: deny for operators with dots (`..=`)
+
+Test for each precedence combo

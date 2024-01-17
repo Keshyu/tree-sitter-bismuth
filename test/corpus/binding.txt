@@ -1,0 +1,26 @@
+===
+Simple binding
+===
+name: jake
+---
+(source_file (binding
+	id: (word)
+	value: (word)))
+
+===
+Bound to a literal
+===
+until: :upto
+---
+(source_file (binding
+	id: (word)
+	value: (literal)))
+
+===
+Non-literal id
+===
+(birthday; fox; tomorrow): purchased
+---
+(source_file (binding
+	id: (group (word) (word) (word))
+	value: (word)))

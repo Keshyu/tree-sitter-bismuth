@@ -1,0 +1,57 @@
+===
+Regular string
+===
+"Hello. This is a message"
+---
+(source_file (string))
+
+===
+^- Multi-line
+===
+"Hello.
+This is a message.
+A very long message"
+---
+(source_file (string))
+
+===
+Block string
+===
+`Hello. `This is a message.
+`A very long message
+---
+(source_file (string))
+
+===
+^- Tightly surrounded
+===
+advance
+`Hello.
+`This is a message.
+`A very long message
+advance
+---
+(source_file (word) (string) (word))
+
+===
+^- Neighboring block stirngs
+===
+`Hello.
+`This is a message.
+`A very long message
+
+`Hello.
+`This is another message.
+`Another very long message
+---
+(source_file (string) (string)))
+
+===
+^- Inside bindings
+===
+a: `"Hello"
+b: `"Hi"
+---
+(source_file
+	(binding id: (word) value: (string))
+	(binding id: (word) value: (string))))
