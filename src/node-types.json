@@ -42,6 +42,10 @@
             "named": true
           },
           {
+            "type": "string",
+            "named": true
+          },
+          {
             "type": "word",
             "named": true
           }
@@ -71,6 +75,10 @@
           },
           {
             "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -118,6 +126,10 @@
             "named": true
           },
           {
+            "type": "string",
+            "named": true
+          },
+          {
             "type": "word",
             "named": true
           }
@@ -141,6 +153,10 @@
           },
           {
             "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -177,6 +193,10 @@
         },
         {
           "type": "pipe",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -219,6 +239,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "tail_dedent",
           "named": true
         },
@@ -258,6 +282,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "tail_dedent",
           "named": true
         },
@@ -267,6 +295,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "tail_dedent",
@@ -293,6 +326,10 @@
           "named": true
         },
         {
+          "type": "string",
+          "named": true
+        },
+        {
           "type": "word",
           "named": true
         }
@@ -301,6 +338,10 @@
   },
   {
     "type": "\n",
+    "named": false
+  },
+  {
+    "type": "\"",
     "named": false
   },
   {

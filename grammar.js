@@ -17,7 +17,6 @@ module.exports = grammar({
     _expr: $ => choice(
       $.group,
       $.pipe,
-
       $.tail_dedent,
 
       $.binding,
@@ -28,6 +27,7 @@ module.exports = grammar({
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
 
+      $.string,
       $.word,
       $.literal,
     ),
@@ -50,6 +50,7 @@ module.exports = grammar({
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
 
+      $.string,
       $.word,
       $.literal,
     ),
@@ -68,6 +69,7 @@ module.exports = grammar({
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      $.string,
       $.word,
       $.literal,
     ),
@@ -85,6 +87,7 @@ module.exports = grammar({
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      $.string,
       $.word,
       $.literal,
     ),
@@ -101,6 +104,7 @@ module.exports = grammar({
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      $.string,
       $.word,
       $.literal,
     ),
@@ -115,6 +119,7 @@ module.exports = grammar({
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      $.string,
       $.word,
       $.literal,
     ),
@@ -127,6 +132,7 @@ module.exports = grammar({
       $.pipe,
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      $.string,
       $.word,
       $.literal,
     ),
@@ -140,6 +146,7 @@ module.exports = grammar({
       $.pipe,
       alias($.call_on_literal, $.call),
       alias($.no_space_call, $.call),
+      $.string,
       $.word,
       $.literal,
     ),
@@ -157,9 +164,15 @@ module.exports = grammar({
       $.group,
       $.pipe,
       alias($.call_on_literal, $.call),
+      $.string,
       $.word,
       $.literal,
     ),
+
+    block_str: _ => seq(
+      sep(/`[^\n]*/, '\n'),
+    ),
+    string: _ => seq('"', /[^"]*/, '"'),
 
     literal: _ => literal,
     word: _ => /[a-zA-Z0-9_]+/,
