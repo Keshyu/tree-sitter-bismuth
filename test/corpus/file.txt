@@ -9,14 +9,3 @@ hiya
 	(word)
 	(word)
 	(word))
-
-===
-Block string
-===
-`Hello
-`Hello
-
-`Hello
-`Hello
----
-(source_file (string) (string) (string) (string))

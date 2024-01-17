@@ -9,16 +9,9 @@ module.exports = grammar({
 
     _sequence: $ => seq(
       optional($._break),
-      // optional($._block_str_seq),
-      // sep($._expr, choice(
-      //   $._break,
-      //   seq($._break, $._block_str_seq),
-      // )),
       sep($._expr, $._break),
       optional($._break),
     ),
-    open_string: _ => /`[^\n]*/,
-    // _block_str_seq: $ => alias($.block_str, $.string),
     _break: _ => repeat1(choice('\n', ';')),
 
     _expr: $ => choice(
@@ -34,7 +27,7 @@ module.exports = grammar({
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
 
-      alias($.open_string, $.string),
+      alias($.string_block, $.string),
       $.string,
       $.word,
       $.literal,
@@ -77,6 +70,7 @@ module.exports = grammar({
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      alias($.string_block, $.string),
       $.string,
       $.word,
       $.literal,
@@ -95,6 +89,7 @@ module.exports = grammar({
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      alias($.string_block, $.string),
       $.string,
       $.word,
       $.literal,
@@ -112,6 +107,7 @@ module.exports = grammar({
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      alias($.string_block, $.string),
       $.string,
       $.word,
       $.literal,
@@ -127,6 +123,7 @@ module.exports = grammar({
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      alias($.string_block, $.string),
       $.string,
       $.word,
       $.literal,
@@ -140,6 +137,7 @@ module.exports = grammar({
       $.pipe,
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
+      alias($.string_block, $.string),
       $.string,
       $.word,
       $.literal,
@@ -152,8 +150,9 @@ module.exports = grammar({
     _expr_no_space_call: $ => choice(
       $.group,
       $.pipe,
-      alias($.call_on_literal, $.call),
       alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
+      alias($.string_block, $.string),
       $.string,
       $.word,
       $.literal,
@@ -172,15 +171,13 @@ module.exports = grammar({
       $.group,
       $.pipe,
       alias($.call_on_literal, $.call),
+      alias($.string_block, $.string),
       $.string,
       $.word,
       $.literal,
     ),
 
-    // block_str: _ => seq(
-    //   /`[^\n]*/,
-    //   repeat(token(seq('\n', /`[^\n]*/))),
-    // ),
+    string_block: _ => /`[^\n]*(\n[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]*`[^\n]*)*/,
     string: _ => seq('"', /[^"]*/, '"'),
 
     literal: _ => literal,

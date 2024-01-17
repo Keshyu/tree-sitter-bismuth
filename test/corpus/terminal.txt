@@ -17,7 +17,8 @@ A very long message"
 ===
 Block string
 ===
-`Hello. `This is a message.
+`Hello.
+`This is a message.
 `A very long message
 ---
 (source_file (string))
@@ -44,14 +45,14 @@ advance
 `This is another message.
 `Another very long message
 ---
-(source_file (string) (string)))
+(source_file (string) (string))
 
 ===
 ^- Inside bindings
 ===
-a: `"Hello"
-b: `"Hi"
+a: `Hello
+b: `Hi
 ---
 (source_file
 	(binding id: (word) value: (string))
-	(binding id: (word) value: (string))))
+	(binding id: (word) value: (string)))
