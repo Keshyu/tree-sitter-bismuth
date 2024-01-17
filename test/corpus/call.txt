@@ -26,7 +26,7 @@ sum(a; b; c)
 	input: (group (word) (word) (word))))
 
 ===
-^- Inside of space call
+^- Inside of regular call
 ===
 sum sum(a; b) c
 ---
@@ -39,7 +39,7 @@ sum sum(a; b) c
       (word))))
 
 ===
-^- Non-nested call ambiguity
+^- Regular call ambiguity
 ===
 sum sum (a; b) c
 ---

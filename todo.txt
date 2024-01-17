@@ -1,10 +1,12 @@
-Declarations: `a + b [a: 1; b: 2]`
+No-space call on pipe brackets: `do{ a; b }`
+
+Highlight binding ':'
 
 Strings
   Strings
     Test multi-line string inside of newline sensitive syntax
   Escape sequences
-  Interpolation: `"\(...)"`
+  Interpolation: `\(...)`
   Raw strings: `#"..."`
 
 Multiple infix calls: `a + b - c`
@@ -15,4 +17,5 @@ Extra dots
   Or: deny for operators with dots (`..=`)
 
 Test for literals, words, symbols
+Test for non-literal binding names
 Test for each precedence combo

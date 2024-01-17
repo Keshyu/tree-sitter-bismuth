@@ -418,21 +418,8 @@
           "type": "FIELD",
           "name": "id",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "word"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "group"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "pipe"
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "_expr_binding"
           }
         },
         {

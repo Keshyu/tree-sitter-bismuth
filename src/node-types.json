@@ -8,11 +8,19 @@
         "required": true,
         "types": [
           {
+            "type": "binding",
+            "named": true
+          },
+          {
             "type": "call",
             "named": true
           },
           {
             "type": "group",
+            "named": true
+          },
+          {
+            "type": "infix_call",
             "named": true
           },
           {
@@ -25,6 +33,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "string_block",
             "named": true
           },
           {
