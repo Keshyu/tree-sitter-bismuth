@@ -1,0 +1,21 @@
+===
+Simple
+===
+if enabled:
+advance
+advance 
+---
+(source_file
+	(tail_dedent (call fn: (word) input: (group (word))))
+	(word)
+	(word))
+
+===
+One-line
+===
+if enabled:; advance; advance
+---
+(source_file
+	(tail_dedent (call fn: (word) input: (group (word))))
+	(word)
+	(word))
