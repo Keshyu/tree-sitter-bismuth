@@ -24,3 +24,30 @@ Non-literal id
 (source_file (binding
 	id: (group (word) (word) (word))
 	value: (word)))
+
+===
+No-space binding
+===
+a::b
+---
+(source_file (binding
+	id: (word)
+	value: (word)))
+
+===
+^- & call
+===
+f a::b c
+---
+(source_file (call
+	fn: (word)
+	input: (group (binding id: (word) value: (word)) (word))))
+
+===
+^- & dot-pipe
+===
+a.x::b.y
+---
+(source_file (binding
+	id: (pipe (word) (word))
+	value: (pipe (word) (word))))

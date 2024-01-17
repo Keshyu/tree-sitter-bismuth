@@ -8,11 +8,23 @@
         "required": true,
         "types": [
           {
+            "type": "call",
+            "named": true
+          },
+          {
             "type": "group",
             "named": true
           },
           {
+            "type": "literal",
+            "named": true
+          },
+          {
             "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -25,6 +37,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "binding",
+            "named": true
+          },
           {
             "type": "call",
             "named": true
@@ -61,6 +77,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "binding",
+            "named": true
+          },
           {
             "type": "call",
             "named": true
@@ -110,6 +130,10 @@
         "required": false,
         "types": [
           {
+            "type": "binding",
+            "named": true
+          },
+          {
             "type": "call",
             "named": true
           },
@@ -139,6 +163,108 @@
         "multiple": false,
         "required": false,
         "types": [
+          {
+            "type": "binding",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "declaration",
+    "named": true,
+    "fields": {
+      "dependencies": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\n",
+            "named": false
+          },
+          {
+            "type": ";",
+            "named": false
+          },
+          {
+            "type": "[",
+            "named": false
+          },
+          {
+            "type": "]",
+            "named": false
+          },
+          {
+            "type": "binding",
+            "named": true
+          },
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "declaration",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "tail_dedent",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binding",
+            "named": true
+          },
           {
             "type": "call",
             "named": true
@@ -181,6 +307,10 @@
         },
         {
           "type": "call",
+          "named": true
+        },
+        {
+          "type": "declaration",
           "named": true
         },
         {
@@ -227,6 +357,10 @@
           "named": true
         },
         {
+          "type": "declaration",
+          "named": true
+        },
+        {
           "type": "group",
           "named": true
         },
@@ -270,6 +404,10 @@
           "named": true
         },
         {
+          "type": "declaration",
+          "named": true
+        },
+        {
           "type": "group",
           "named": true
         },
@@ -309,6 +447,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "binding",
+          "named": true
+        },
         {
           "type": "call",
           "named": true
@@ -365,7 +507,19 @@
     "named": false
   },
   {
+    "type": "::",
+    "named": false
+  },
+  {
     "type": ";",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {

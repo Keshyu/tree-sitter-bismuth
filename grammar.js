@@ -19,10 +19,12 @@ module.exports = grammar({
       $.pipe,
       $.tail_dedent,
 
+      $.declaration,
       $.binding,
       alias($.comma_group, $.group),
       alias($.infix_call, $.call),
       $.call,
+      alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
@@ -36,10 +38,7 @@ module.exports = grammar({
     group: $ => seq('(', $._sequence, ')'),
     pipe: $ => seq('{', $._sequence, '}'),
 
-    tail_dedent: $ => seq(
-      $._tail_dedent_expr,
-      ':',
-    ),
+    tail_dedent: $ => seq($._tail_dedent_expr, ':'),
     _tail_dedent_expr: $ => choice(
       $.group,
       $.pipe,
@@ -47,6 +46,29 @@ module.exports = grammar({
       alias($.comma_group, $.group),
       alias($.infix_call, $.call),
       $.call,
+      alias($.no_space_binding, $.binding),
+      alias($.dot_pipe, $.pipe),
+      alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
+
+      $.string,
+      $.word,
+      $.literal,
+    ),
+
+    declaration: $ => seq(
+      field('value', $._declaration_expr),
+      field('dependencies', seq('[', $._sequence, ']')),
+    ),
+    _declaration_expr: $ => choice(
+      $.group,
+      $.pipe,
+
+      $.binding,
+      alias($.comma_group, $.group),
+      alias($.infix_call, $.call),
+      $.call,
+      alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
@@ -67,6 +89,7 @@ module.exports = grammar({
       alias($.comma_group, $.group),
       alias($.infix_call, $.call),
       $.call,
+      alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
@@ -86,6 +109,7 @@ module.exports = grammar({
       $.pipe,
       alias($.infix_call, $.call),
       $.call,
+      alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
@@ -104,6 +128,7 @@ module.exports = grammar({
       $.group,
       $.pipe,
       $.call,
+      alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
       alias($.no_space_call, $.call),
       alias($.call_on_literal, $.call),
@@ -118,6 +143,24 @@ module.exports = grammar({
       field('input', alias(repeat1($._expr_call), $.group)),
     ),
     _expr_call: $ => choice(
+      $.group,
+      $.pipe,
+      alias($.no_space_binding, $.binding),
+      alias($.dot_pipe, $.pipe),
+      alias($.no_space_call, $.call),
+      alias($.call_on_literal, $.call),
+      alias($.string_block, $.string),
+      $.string,
+      $.word,
+      $.literal,
+    ),
+
+    no_space_binding: $ => seq(
+      field('id', $._expr_no_space_binding),
+      '::',
+      field('value', $._expr_no_space_binding),
+    ),
+    _expr_no_space_binding: $ => choice(
       $.group,
       $.pipe,
       alias($.dot_pipe, $.pipe),

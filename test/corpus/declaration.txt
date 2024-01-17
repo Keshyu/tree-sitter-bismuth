@@ -1,0 +1,26 @@
+===
+Declaration
+===
+a [a: x]
+---
+(source_file (declaration
+  value: (word)
+  dependencies: (binding
+    id: (word)
+    value: (word))))
+
+===
+Complex
+===
+result: a + b.c [a: x]
+---
+(source_file (declaration
+  value: (binding
+    id: (word)
+    value: (call
+      left: (word)
+      fn: (symbol)
+      right: (pipe (word) (word))))
+  dependencies: (binding
+    id: (word)
+    value: (word))))
