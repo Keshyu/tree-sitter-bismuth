@@ -9,9 +9,15 @@ module.exports = grammar({
 
     _sequence: $ => seq(
       optional($._break),
-      sep($._expr, $._break),
+      optional($._block_str_seq),
+      sep($._expr, choice(
+        $._break,
+        seq($._break, $._block_str_seq),
+      )),
       optional($._break),
     ),
+    _block_str_seq: $ => sep(alias($.block_str, $.string), $._break),
+    // _block_str_seq: $ => alias($.block_str, $.string),
     _break: _ => repeat1(choice('\n', ';')),
 
     _expr: $ => choice(
@@ -169,9 +175,11 @@ module.exports = grammar({
       $.literal,
     ),
 
-    block_str: _ => seq(
-      sep(/`[^\n]*/, '\n'),
-    ),
+    // block_str: _ => seq(
+    //   /`[^\n]*/,
+    //   repeat(token(seq('\n', /`[^\n]*/))),
+    // ),
+    block_str: _ => repeat1(/`[^\n]*\n/),
     string: _ => seq('"', /[^"]*/, '"'),
 
     literal: _ => literal,

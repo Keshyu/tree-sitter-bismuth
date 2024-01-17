@@ -216,7 +216,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "binding",
@@ -335,6 +335,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "\u0000",
+    "named": false
   },
   {
     "type": "\n",

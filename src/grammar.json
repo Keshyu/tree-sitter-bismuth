@@ -22,6 +22,18 @@
           ]
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_block_str_seq"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -34,8 +46,26 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "SYMBOL",
-                    "name": "_break"
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_break"
+                      },
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "SYMBOL",
+                            "name": "_break"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "_block_str_seq"
+                          }
+                        ]
+                      }
+                    ]
                   },
                   {
                     "type": "SYMBOL",
@@ -57,6 +87,41 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_block_str_seq": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "block_str"
+          },
+          "named": true,
+          "value": "string"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_break"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "block_str"
+                },
+                "named": true,
+                "value": "string"
+              }
+            ]
+          }
         }
       ]
     },
@@ -893,6 +958,22 @@
           "name": "literal"
         }
       ]
+    },
+    "block_str": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "`[^\\n]*\\n"
+          },
+          {
+            "type": "STRING",
+            "value": "\u0000"
+          }
+        ]
+      }
     },
     "string": {
       "type": "SEQ",
