@@ -601,13 +601,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",
@@ -699,13 +694,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",
@@ -793,13 +783,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",
@@ -874,13 +859,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",
@@ -951,13 +931,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",
@@ -1024,13 +999,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",
@@ -1116,13 +1086,8 @@
           "value": "call"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "string_block"
-          },
-          "named": true,
-          "value": "string"
+          "type": "SYMBOL",
+          "name": "string_block"
         },
         {
           "type": "SYMBOL",

@@ -134,6 +134,10 @@
             "named": true
           },
           {
+            "type": "string_block",
+            "named": true
+          },
+          {
             "type": "word",
             "named": true
           }
@@ -379,6 +383,10 @@
             "named": true
           },
           {
+            "type": "string_block",
+            "named": true
+          },
+          {
             "type": "word",
             "named": true
           }
@@ -414,6 +422,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "string_block",
             "named": true
           },
           {
@@ -454,6 +466,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "string_block",
             "named": true
           },
           {
