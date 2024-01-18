@@ -1,21 +1,26 @@
 (tail_dedent ":" @keyword)
 
-(call
-  fn: (word) @function)
+(binding ":" @punctuation.delimiter)
+(binding "::" @punctuation.delimiter)
 
 (infix_call
   fn: (symbol) @operator)
 
+(call
+  fn: (word) @keyword)
+
+(no_space_call
+  fn: (word) @function)
+
 (string) @string
 (string_block) @string
-
-(word) @variable
 
 ((word) @type
   (#match? @type "^[^a-z]*[A-Z]"))
 
+(word) @variable
 
-":" @punctuation.delimiter
+
 "(" @punctuation.bracket
 ")" @punctuation.bracket
 "[" @punctuation.bracket

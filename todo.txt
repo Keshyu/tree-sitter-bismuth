@@ -1,7 +1,5 @@
 No-space call on pipe brackets: `do{ a; b }`
 
-Highlight binding ':'
-
 Strings
   Strings
     Test multi-line string inside of newline sensitive syntax
@@ -10,7 +8,7 @@ Strings
   Raw strings: `#"..."`
 
 Multiple infix calls: `a + b - c`
-  Homogenous: `a + b + c` / `a + b , c`
+  Homogenous: `a + b _ c _ d`
 
 Extra dots
   Ignore for convenience

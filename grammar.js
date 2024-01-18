@@ -26,7 +26,7 @@ module.exports = grammar({
       $.call,
       alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
 
       $.string_block,
@@ -48,7 +48,7 @@ module.exports = grammar({
       $.call,
       alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
 
       $.string,
@@ -70,7 +70,7 @@ module.exports = grammar({
       $.call,
       alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
 
       $.string,
@@ -80,7 +80,7 @@ module.exports = grammar({
 
     binding: $ => seq(
       field('id', $._expr_binding),
-      /:[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/,
+      alias(/:[ \f\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]/, ':'),
       field('value', $._expr_binding),
     ),
     _expr_binding: $ => choice(
@@ -91,7 +91,7 @@ module.exports = grammar({
       $.call,
       alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
       $.string_block,
       $.string,
@@ -111,7 +111,7 @@ module.exports = grammar({
       $.call,
       alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
       alias($.string_block, $.string),
       $.string,
@@ -130,7 +130,7 @@ module.exports = grammar({
       $.call,
       alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
       alias($.string_block, $.string),
       $.string,
@@ -147,7 +147,7 @@ module.exports = grammar({
       $.pipe,
       alias($.no_space_binding, $.binding),
       alias($.dot_pipe, $.pipe),
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
       alias($.string_block, $.string),
       $.string,
@@ -164,7 +164,7 @@ module.exports = grammar({
       $.group,
       $.pipe,
       alias($.dot_pipe, $.pipe),
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
       alias($.string_block, $.string),
       $.string,
@@ -178,7 +178,7 @@ module.exports = grammar({
     _expr_dot_pipe: $ => choice(
       $.group,
       $.pipe,
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
       alias($.string_block, $.string),
       $.string,
@@ -193,7 +193,7 @@ module.exports = grammar({
     _expr_no_space_call: $ => choice(
       $.group,
       $.pipe,
-      alias($.no_space_call, $.call),
+      $.no_space_call,
       alias($.call_on_literal, $.call),
       alias($.string_block, $.string),
       $.string,

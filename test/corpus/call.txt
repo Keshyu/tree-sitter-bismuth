@@ -1,127 +1,172 @@
-===
+================================================================================
 Single argument
-===
+================================================================================
 print name
----
-(source_file (call
-	fn: (word)
-	input: (group (word))))
+--------------------------------------------------------------------------------
 
-===
+(source_file
+  (call
+    fn: (word)
+    input: (group
+      (word))))
+
+================================================================================
 Multiple arguments
-===
+================================================================================
 sum a b c
----
-(source_file (call
-	fn: (word)
-	input: (group (word) (word) (word))))
+--------------------------------------------------------------------------------
 
-===
-No-space call
-===
-sum(a; b; c)
----
-(source_file (call
-	fn: (word)
-	input: (group (word) (word) (word))))
-
-===
-^- Inside of regular call
-===
-sum sum(a; b) c
----
-(source_file (call
-	fn: (word)
-	input: (group
-      (call
-        fn: (word)
-        input: (group (word) (word)))
-      (word))))
-
-===
-^- Regular call ambiguity
-===
-sum sum (a; b) c
----
-(source_file (call
-	fn: (word)
-	input: (group
+(source_file
+  (call
+    fn: (word)
+    input: (group
       (word)
-      (group (word) (word))
+      (word)
       (word))))
 
-===
-^- Rescursive call
-===
-bake(cherry)(slice)
----
-(source_file (call
-	fn: (call
-		fn: (word)
-		input: (group (word)))
-	input: (group (word))))
+================================================================================
+No-space call
+================================================================================
+sum(a; b; c)
+--------------------------------------------------------------------------------
 
-===
-Literal call
-===
-user:name
----
-(source_file (call
-	fn: (word)
-	input: (literal)))
+(source_file
+  (no_space_call
+    fn: (word)
+    input: (group
+      (word)
+      (word)
+      (word))))
 
-===
+================================================================================
+^- Inside of regular call
+================================================================================
+sum sum(a; b) c
+--------------------------------------------------------------------------------
+
+(source_file
+  (call
+    fn: (word)
+    input: (group
+      (no_space_call
+        fn: (word)
+        input: (group
+          (word)
+          (word)))
+      (word))))
+
+================================================================================
 ^- Regular call ambiguity
-===
+================================================================================
+sum sum (a; b) c
+--------------------------------------------------------------------------------
+
+(source_file
+  (call
+    fn: (word)
+    input: (group
+      (word)
+      (group
+        (word)
+        (word))
+      (word))))
+
+================================================================================
+^- Rescursive call
+================================================================================
+bake(cherry)(slice)
+--------------------------------------------------------------------------------
+
+(source_file
+  (no_space_call
+    fn: (no_space_call
+      fn: (word)
+      input: (group
+        (word)))
+    input: (group
+      (word))))
+
+================================================================================
+Literal call
+================================================================================
+user:name
+--------------------------------------------------------------------------------
+
+(source_file
+  (call
+    fn: (word)
+    input: (literal)))
+
+================================================================================
+^- Regular call ambiguity
+================================================================================
 user account :name
----
-(source_file (call
-	fn: (word)
-	input: (group (word) (literal))))
+--------------------------------------------------------------------------------
 
-===
+(source_file
+  (call
+    fn: (word)
+    input: (group
+      (word)
+      (literal))))
+
+================================================================================
 Infix call
-===
+================================================================================
 a < b
----
-(source_file (infix_call
-	left: (word)
-	fn: (symbol)
-	right: (word)))
+--------------------------------------------------------------------------------
 
-===
+(source_file
+  (infix_call
+    left: (word)
+    fn: (symbol)
+    right: (word)))
+
+================================================================================
 ^- & binding
-===
+================================================================================
 c: a + b
----
-(source_file (binding
-	id: (word)
-	value: (infix_call
-		left: (word)
-		fn: (symbol)
-		right: (word))))
+--------------------------------------------------------------------------------
 
-===
+(source_file
+  (binding
+    id: (word)
+    value: (infix_call
+      left: (word)
+      fn: (symbol)
+      right: (word))))
+
+================================================================================
 ^- & comma-group
-===
+================================================================================
 a + b, c + d
----
-(source_file (group
-	(infix_call
-		left: (word)
-		fn: (symbol)
-		right: (word))
-	(infix_call
-		left: (word)
-		fn: (symbol)
-		right: (word))))
+--------------------------------------------------------------------------------
 
-===
+(source_file
+  (group
+    (infix_call
+      left: (word)
+      fn: (symbol)
+      right: (word))
+    (infix_call
+      left: (word)
+      fn: (symbol)
+      right: (word))))
+
+================================================================================
 ^- & call
-===
+================================================================================
 f a + g b
----
-(source_file (infix_call
-	left: (call fn: (word) input: (group (word)))
-	fn: (symbol)
-	right: (call fn: (word) input: (group (word)))))
+--------------------------------------------------------------------------------
+
+(source_file
+  (infix_call
+    left: (call
+      fn: (word)
+      input: (group
+        (word)))
+    fn: (symbol)
+    right: (call
+      fn: (word)
+      input: (group
+        (word)))))

@@ -28,6 +28,10 @@
             "named": true
           },
           {
+            "type": "no_space_call",
+            "named": true
+          },
+          {
             "type": "pipe",
             "named": true
           },
@@ -67,6 +71,10 @@
           },
           {
             "type": "literal",
+            "named": true
+          },
+          {
+            "type": "no_space_call",
             "named": true
           },
           {
@@ -111,6 +119,10 @@
           },
           {
             "type": "literal",
+            "named": true
+          },
+          {
+            "type": "no_space_call",
             "named": true
           },
           {
@@ -192,6 +204,10 @@
             "named": true
           },
           {
+            "type": "no_space_call",
+            "named": true
+          },
+          {
             "type": "pipe",
             "named": true
           },
@@ -235,6 +251,10 @@
           },
           {
             "type": "literal",
+            "named": true
+          },
+          {
+            "type": "no_space_call",
             "named": true
           },
           {
@@ -283,6 +303,10 @@
         },
         {
           "type": "literal",
+          "named": true
+        },
+        {
+          "type": "no_space_call",
           "named": true
         },
         {
@@ -343,6 +367,10 @@
             "named": true
           },
           {
+            "type": "no_space_call",
+            "named": true
+          },
+          {
             "type": "pipe",
             "named": true
           },
@@ -377,6 +405,10 @@
             "named": true
           },
           {
+            "type": "no_space_call",
+            "named": true
+          },
+          {
             "type": "pipe",
             "named": true
           },
@@ -386,6 +418,56 @@
           },
           {
             "type": "word",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "no_space_call",
+    "named": true,
+    "fields": {
+      "fn": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "literal",
+            "named": true
+          },
+          {
+            "type": "no_space_call",
+            "named": true
+          },
+          {
+            "type": "pipe",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "word",
+            "named": true
+          }
+        ]
+      },
+      "input": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "group",
             "named": true
           }
         ]
@@ -422,6 +504,10 @@
         },
         {
           "type": "literal",
+          "named": true
+        },
+        {
+          "type": "no_space_call",
           "named": true
         },
         {
@@ -480,6 +566,10 @@
           "named": true
         },
         {
+          "type": "no_space_call",
+          "named": true
+        },
+        {
           "type": "pipe",
           "named": true
         },
@@ -533,6 +623,10 @@
         },
         {
           "type": "literal",
+          "named": true
+        },
+        {
+          "type": "no_space_call",
           "named": true
         },
         {

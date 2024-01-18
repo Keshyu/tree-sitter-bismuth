@@ -1,50 +1,83 @@
-===
+================================================================================
 Binding & comma-group
-===
+================================================================================
 result: a, b, c
----
-(source_file (binding
-  id: (word)
-  value: (group (word) (word) (word))))
+--------------------------------------------------------------------------------
 
-===
+(source_file
+  (binding
+    id: (word)
+    value: (group
+      (word)
+      (word)
+      (word))))
+
+================================================================================
 Comma-group & call
-===
+================================================================================
 f x, g y
----
-(source_file (group
-  (call fn: (word) input: (group (word)))
-  (call fn: (word) input: (group (word)))))
+--------------------------------------------------------------------------------
 
-===
+(source_file
+  (group
+    (call
+      fn: (word)
+      input: (group
+        (word)))
+    (call
+      fn: (word)
+      input: (group
+        (word)))))
+
+================================================================================
 Call & dot-pipe
-===
+================================================================================
 print n1.str n2.str
----
-(source_file (call
-  fn: (word)
-  input:  (group
-    (pipe (word) (word))
-    (pipe (word) (word)))))
+--------------------------------------------------------------------------------
 
-===
-Dot-pipe & no-space call
-===
-a.add(x).mul(y).sub(z)
----
-(source_file (pipe
-  (word)
-  (call fn: (word) input: (group (word)))
-  (call fn: (word) input: (group (word)))
-  (call fn: (word) input: (group (word)))))
-
-===
-No-space call & call on literal
-===
-storage:store(data)
----
-(source_file (call
-  fn: (call
+(source_file
+  (call
     fn: (word)
-    input: (literal))
-  input: (group (word))))
+    input: (group
+      (pipe
+        (word)
+        (word))
+      (pipe
+        (word)
+        (word)))))
+
+================================================================================
+Dot-pipe & no-space call
+================================================================================
+a.add(x).mul(y).sub(z)
+--------------------------------------------------------------------------------
+
+(source_file
+  (pipe
+    (word)
+    (no_space_call
+      fn: (word)
+      input: (group
+        (word)))
+    (no_space_call
+      fn: (word)
+      input: (group
+        (word)))
+    (no_space_call
+      fn: (word)
+      input: (group
+        (word)))))
+
+================================================================================
+No-space call & call on literal
+================================================================================
+storage:store(data)
+--------------------------------------------------------------------------------
+
+(source_file
+  (no_space_call
+    fn: (call
+      fn: (word)
+      input: (literal))
+    input: (group
+      (word))))

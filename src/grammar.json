@@ -135,13 +135,8 @@
           "value": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -264,13 +259,8 @@
           "value": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -380,13 +370,8 @@
           "value": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -423,8 +408,13 @@
           }
         },
         {
-          "type": "PATTERN",
-          "value": ":[ \\f\\r\\t\\v\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]"
+          "type": "ALIAS",
+          "content": {
+            "type": "PATTERN",
+            "value": ":[ \\f\\r\\t\\v\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]"
+          },
+          "named": false,
+          "value": ":"
         },
         {
           "type": "FIELD",
@@ -483,13 +473,8 @@
           "value": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -603,13 +588,8 @@
           "value": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -706,13 +686,8 @@
           "value": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -805,13 +780,8 @@
           "value": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -891,13 +861,8 @@
           "value": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -973,13 +938,8 @@
           "name": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
@@ -1051,13 +1011,8 @@
           "name": "pipe"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "no_space_call"
-          },
-          "named": true,
-          "value": "call"
+          "type": "SYMBOL",
+          "name": "no_space_call"
         },
         {
           "type": "ALIAS",
