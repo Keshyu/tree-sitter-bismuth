@@ -1,4 +1,25 @@
 ===
+Word
+===
+hello
+---
+(source_file (word))
+
+===
+^- With symbols inside
+===
+hello-and-hi
+---
+(source_file (word))
+
+===
+Symbol
+===
+>==
+---
+(source_file (symbol))
+
+===
 Regular string
 ===
 "Hello. This is a message"

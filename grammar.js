@@ -32,6 +32,7 @@ module.exports = grammar({
       $.string_block,
       $.string,
       $.word,
+      $.symbol,
       $.literal,
     ),
 
@@ -53,6 +54,7 @@ module.exports = grammar({
 
       $.string,
       $.word,
+      $.symbol,
       $.literal,
     ),
 
@@ -75,6 +77,7 @@ module.exports = grammar({
 
       $.string,
       $.word,
+      $.symbol,
       $.literal,
     ),
 
@@ -116,6 +119,7 @@ module.exports = grammar({
       $.string_block,
       $.string,
       $.word,
+      $.symbol,
       $.literal,
     ),
 
@@ -139,7 +143,7 @@ module.exports = grammar({
     ),
 
     call: $ => seq(
-      field('fn', $._expr_call),
+      field('fn', choice($._expr_call, $.symbol)),
       field('input', alias(repeat1($._expr_call), $.group)),
     ),
     _expr_call: $ => choice(
@@ -224,7 +228,12 @@ module.exports = grammar({
     string: _ => seq('"', /[^"]*/, '"'),
 
     literal: _ => literal,
-    word: _ => /[a-zA-Z0-9_]+/,
+    word: _ => (
+      new RegExp([
+        /[a-zA-Z0-9_]+/,
+        /([!@#$%^&*\-=+\\|<>/?~]+[a-zA-Z0-9_]+)*/,
+      ].map(r => r.source).join(''))
+    ),
     symbol: _ => /[!@#$%^&*\-=+\\|<>/?~]+/,
     tree_sitter_word: _ => /[a-zA-Z0-9_]+|[!@#$%^&*\-=+\\|<>/?~]+/,
   },

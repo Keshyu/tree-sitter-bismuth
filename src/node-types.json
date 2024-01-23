@@ -138,6 +138,10 @@
             "named": true
           },
           {
+            "type": "symbol",
+            "named": true
+          },
+          {
             "type": "word",
             "named": true
           }
@@ -224,6 +228,10 @@
             "named": true
           },
           {
+            "type": "symbol",
+            "named": true
+          },
+          {
             "type": "tail_dedent",
             "named": true
           },
@@ -267,6 +275,10 @@
           },
           {
             "type": "string",
+            "named": true
+          },
+          {
+            "type": "symbol",
             "named": true
           },
           {
@@ -323,6 +335,10 @@
         },
         {
           "type": "string_block",
+          "named": true
+        },
+        {
+          "type": "symbol",
           "named": true
         },
         {
@@ -539,6 +555,10 @@
           "named": true
         },
         {
+          "type": "symbol",
+          "named": true
+        },
+        {
           "type": "tail_dedent",
           "named": true
         },
@@ -598,6 +618,10 @@
           "named": true
         },
         {
+          "type": "symbol",
+          "named": true
+        },
+        {
           "type": "tail_dedent",
           "named": true
         },
@@ -651,6 +675,10 @@
         },
         {
           "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
           "named": true
         },
         {

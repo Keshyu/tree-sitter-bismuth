@@ -161,6 +161,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "symbol"
+        },
+        {
+          "type": "SYMBOL",
           "name": "literal"
         }
       ]
@@ -281,6 +285,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "symbol"
+        },
+        {
+          "type": "SYMBOL",
           "name": "literal"
         }
       ]
@@ -389,6 +397,10 @@
         {
           "type": "SYMBOL",
           "name": "word"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "symbol"
         },
         {
           "type": "SYMBOL",
@@ -614,6 +626,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "symbol"
+        },
+        {
+          "type": "SYMBOL",
           "name": "literal"
         }
       ]
@@ -718,8 +734,17 @@
           "type": "FIELD",
           "name": "fn",
           "content": {
-            "type": "SYMBOL",
-            "name": "_expr_call"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_expr_call"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "symbol"
+              }
+            ]
           }
         },
         {
@@ -1130,7 +1155,7 @@
     },
     "word": {
       "type": "PATTERN",
-      "value": "[a-zA-Z0-9_]+"
+      "value": "[a-zA-Z0-9_]+([!@#$%^&*\\-=+\\\\|<>/?~]+[a-zA-Z0-9_]+)*"
     },
     "symbol": {
       "type": "PATTERN",
